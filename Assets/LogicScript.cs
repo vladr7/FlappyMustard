@@ -17,6 +17,7 @@ public class LogicScript : MonoBehaviour
     public void Start()
     {
         birdScript = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdScript>();
+        dingSFX.volume = 0.2f;
     }
 
     [ContextMenu("Increase Score")]
