@@ -12,6 +12,7 @@ public class LogicScript : MonoBehaviour
     public GameObject gameOverScreen;
     public BirdScript birdScript;
     public AudioSource dingSFX;
+    public AudioSource deadBirdSFX;
 
     public void Start()
     {
@@ -36,6 +37,7 @@ public class LogicScript : MonoBehaviour
 
     public void gameOver()
     {
+        deadBirdSFX.Play();
         gameOverScreen.SetActive(true);
     }
 }
