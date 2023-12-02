@@ -25,7 +25,7 @@ public class BirdScript : MonoBehaviour
             return;
         }
 
-        if (myRigidbody.transform.position.y > 16 || myRigidbody.transform.position.y < -16)
+        if (myRigidbody.transform.position.y > 20 || myRigidbody.transform.position.y < -20)
         {
             birdIsAlive = false;
             logic.gameOver();
