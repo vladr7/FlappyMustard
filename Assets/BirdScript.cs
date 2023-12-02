@@ -24,6 +24,13 @@ public class BirdScript : MonoBehaviour
         {
             return;
         }
+
+        if (myRigidbody.transform.position.y > 16 || myRigidbody.transform.position.y < -16)
+        {
+            birdIsAlive = false;
+            logic.gameOver();
+            return;
+        }
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
