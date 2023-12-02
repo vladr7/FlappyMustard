@@ -11,7 +11,7 @@ public class LogicScript : MonoBehaviour
     public Text scoreText;
     public GameObject gameOverScreen;
     public BirdScript birdScript;
-    private AudioSource dingSFX;
+    public AudioSource dingSFX;
 
     public void Start()
     {
@@ -23,7 +23,7 @@ public class LogicScript : MonoBehaviour
     {
         if (birdScript.birdIsAlive)
         {
-            // dingSFX.Play();
+            dingSFX.Play();
             playerScore += 1;
             scoreText.text = playerScore.ToString();
         }
