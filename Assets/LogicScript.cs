@@ -13,11 +13,14 @@ public class LogicScript : MonoBehaviour
     public BirdScript birdScript;
     public AudioSource dingSFX;
     public AudioSource deadBirdSFX;
+    public Text highScoreText;
 
     public void Start()
     {
         birdScript = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdScript>();
         dingSFX.volume = 0.2f;
+        int highScore = PlayerPrefs.GetInt("HIGH_SCORE");
+        highScoreText.text = highScore.ToString();
     }
 
     [ContextMenu("Increase Score")]
@@ -38,6 +41,11 @@ public class LogicScript : MonoBehaviour
 
     public void gameOver()
     {
+        int oldHighScore = PlayerPrefs.GetInt("HIGH_SCORE");
+        if (playerScore > oldHighScore)
+        {
+            PlayerPrefs.SetInt("HIGH_SCORE", playerScore);
+        }
         deadBirdSFX.Play();
         gameOverScreen.SetActive(true);
     }
