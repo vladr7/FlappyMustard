@@ -41,4 +41,9 @@ public class LogicScript : MonoBehaviour
         deadBirdSFX.Play();
         gameOverScreen.SetActive(true);
     }
+    
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }

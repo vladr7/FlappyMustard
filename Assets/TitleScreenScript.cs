@@ -11,4 +11,9 @@ public class TitleScreenScript : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
         
     }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }
