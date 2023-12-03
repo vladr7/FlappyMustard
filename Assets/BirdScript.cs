@@ -33,16 +33,21 @@ public class BirdScript : MonoBehaviour
             return;
         }
         
+        flap();
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        birdIsAlive = false;
+        logic.gameOver();
+    }
+    
+    private void flap()
+    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             flapSFX.Play();
             myRigidbody.velocity = Vector2.up * flapStrength;
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        birdIsAlive = false;
-        logic.gameOver();
     }
 }
