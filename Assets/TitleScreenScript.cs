@@ -5,10 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class TitleScreenScript : MonoBehaviour
 {
-    public void loadMainScene()
+    public void loadFlappyScene()
     {
-        SceneManager.LoadScene("SampleScene");
-        
+        SceneManager.LoadScene("Scenes/Flappy");
+    }
+
+    public void loadSuika()
+    {
+        SceneManager.LoadScene("Scenes/Suika");
+
     }
 
     public void quitGame()
