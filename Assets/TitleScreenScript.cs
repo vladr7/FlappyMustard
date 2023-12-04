@@ -7,7 +7,6 @@ public class TitleScreenScript : MonoBehaviour
 {
     public void loadMainScene()
     {
-        Debug.Log("Load main scene");
         SceneManager.LoadScene("SampleScene");
         
     }

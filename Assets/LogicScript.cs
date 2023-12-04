@@ -14,9 +14,10 @@ public class LogicScript : MonoBehaviour
     public AudioSource dingSFX;
     public AudioSource deadBirdSFX;
     public Text highScoreText;
-    public int numberOfTurbo = 1;
+    public int numberOfTurbo = 3;
     public ParticleSystem clouds;
     public float cloudSpeedBoost = 3;
+    public PipeSpawnScript pipeSpawnScript;
 
     public void Start()
     {

@@ -9,6 +9,7 @@ TagManager:
   - Clouds
   - PipeSpawner
   - Turbo
+  - MiddlePlank
   layers:
   - Default
   - TransparentFX

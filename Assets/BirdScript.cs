@@ -19,7 +19,6 @@ public class BirdScript : MonoBehaviour
     private GameObject secondTurbo;
     private GameObject thirdTurbo;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +26,6 @@ public class BirdScript : MonoBehaviour
         firstTurbo = turboBar.transform.GetChild(0).gameObject;
         secondTurbo = turboBar.transform.GetChild(1).gameObject;
         thirdTurbo = turboBar.transform.GetChild(2).gameObject;
-        Debug.Log("Logging!");
     }
 
     // Update is called once per frame
@@ -105,8 +103,17 @@ public class BirdScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        birdIsAlive = false;
-        logic.gameOver();
+        if (other.gameObject.CompareTag("MiddlePlank"))
+        {
+            // logic.deadBirdSFX.Play();
+            birdIsAlive = false;
+            logic.gameOver();
+        }
+        else
+        {
+            birdIsAlive = false;
+            logic.gameOver();
+        }
     }
 
     private void flap()

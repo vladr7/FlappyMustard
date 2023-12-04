@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PipeSpawnScript : MonoBehaviour
@@ -33,6 +34,15 @@ public class PipeSpawnScript : MonoBehaviour
     {
         float lowestPoint = transform.position.y - heightOffset;
         float highestPoint = transform.position.y + heightOffset;
+        if (Random.Range(0, 100) < 20)
+        {
+            pipe.transform.GetChild(3).gameObject.SetActive(true);
+        }
+        else
+        {
+            pipe.transform.GetChild(3).gameObject.SetActive(false);
+        }
         Instantiate(pipe, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation);
+       
     }
 }
