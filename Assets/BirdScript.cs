@@ -10,17 +10,35 @@ public class BirdScript : MonoBehaviour
     public LogicScript logic;
     public bool birdIsAlive = true;
     public AudioSource flapSFX;
+    public ParticleSystem turbo;
+    public bool turboActive = false;
 
     // Start is called before the first frame update
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        // turbo = GameObject.FindGameObjectWithTag("Turbo").GetComponent<ParticleSystem>();
         Debug.Log("Logging!");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (turboActive)
+        {
+            if (!turbo.isPlaying)
+            {
+                turbo.Play();
+            }
+        }
+        else
+        {
+            if (turbo.isPlaying)
+            {
+                turbo.Stop();
+            }
+        }
+        
         if (!birdIsAlive)
         {
             return;
@@ -49,5 +67,10 @@ public class BirdScript : MonoBehaviour
             flapSFX.Play();
             myRigidbody.velocity = Vector2.up * flapStrength;
         }
+    }
+
+    public void setTurbo(bool active)
+    {
+        turboActive = active;
     }
 }

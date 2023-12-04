@@ -7,16 +7,15 @@ public class PipeMoveScript : MonoBehaviour
 {
     public float moveSpeed = 10;
     public float deadZone = -45;
-    public float turboStrength = 10;
-    private float _defaultMoveSpeed;
     public ParticleSystem clouds;
     public float cloudSpeedBoost = 3;
-
+    public BirdScript birdScript;
+    
     // Start is called before the first frame update
     void Start()
     {
         clouds = GameObject.FindGameObjectWithTag("Clouds").GetComponent<ParticleSystem>();
-        _defaultMoveSpeed = moveSpeed;
+        birdScript = GameObject.FindGameObjectWithTag("Bird").GetComponent<BirdScript>();
     }
 
     // Update is called once per frame
@@ -35,16 +34,18 @@ public class PipeMoveScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            moveSpeed += turboStrength;
+            birdScript.setTurbo(true);
             var main = clouds.main;
             main.simulationSpeed = cloudSpeedBoost;
+            Time.timeScale = 2.0f;
             Invoke(nameof(resetSpeed), 1);
         }
     }
     
     private void resetSpeed()
     {
-        moveSpeed = _defaultMoveSpeed;
+        birdScript.setTurbo(false);
+        Time.timeScale = 1.0f;
         var main = clouds.main;
         main.simulationSpeed = 1;
     }
