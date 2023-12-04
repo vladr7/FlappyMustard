@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Logic
   - Bird
+  - Clouds
+  - PipeSpawner
+  - Turbo
   layers:
   - Default
   - TransparentFX
