@@ -13,18 +13,27 @@ public class BirdScript : MonoBehaviour
     public ParticleSystem turbo;
     public ParticleSystem explosion;
     public bool turboActive = false;
+    public bool hasTurbo = true;
+    public GameObject turboBar;
+    private GameObject firstTurbo;
+    private GameObject secondTurbo;
+    private GameObject thirdTurbo;
+
 
     // Start is called before the first frame update
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
-        // turbo = GameObject.FindGameObjectWithTag("Turbo").GetComponent<ParticleSystem>();
+        firstTurbo = turboBar.transform.GetChild(0).gameObject;
+        secondTurbo = turboBar.transform.GetChild(1).gameObject;
+        thirdTurbo = turboBar.transform.GetChild(2).gameObject;
         Debug.Log("Logging!");
     }
 
     // Update is called once per frame
     void Update()
     {
+        ManageTurboBar();
         if (turboActive)
         {
             if (!turbo.isPlaying)
@@ -49,7 +58,7 @@ public class BirdScript : MonoBehaviour
                 explosion.Stop();
             }
         }
-        
+
         if (!birdIsAlive)
         {
             return;
@@ -61,16 +70,45 @@ public class BirdScript : MonoBehaviour
             logic.gameOver();
             return;
         }
-        
+
         flap();
     }
-    
+
+    private void ManageTurboBar()
+    {
+        hasTurbo = logic.numberOfTurbo > 0;
+        if (logic.numberOfTurbo <= 0)
+        {
+            firstTurbo.SetActive(false);
+            secondTurbo.SetActive(false);
+            thirdTurbo.SetActive(false);
+        }
+        else if (logic.numberOfTurbo == 1)
+        {
+            firstTurbo.SetActive(true);
+            secondTurbo.SetActive(false);
+            thirdTurbo.SetActive(false);
+        }
+        else if (logic.numberOfTurbo == 2)
+        {
+            firstTurbo.SetActive(true);
+            secondTurbo.SetActive(true);
+            thirdTurbo.SetActive(false);
+        }
+        else if (logic.numberOfTurbo >= 3)
+        {
+            firstTurbo.SetActive(true);
+            secondTurbo.SetActive(true);
+            thirdTurbo.SetActive(true);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         birdIsAlive = false;
         logic.gameOver();
     }
-    
+
     private void flap()
     {
         if (Input.GetKeyDown(KeyCode.Space))
