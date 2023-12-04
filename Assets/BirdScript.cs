@@ -11,6 +11,7 @@ public class BirdScript : MonoBehaviour
     public bool birdIsAlive = true;
     public AudioSource flapSFX;
     public ParticleSystem turbo;
+    public ParticleSystem explosion;
     public bool turboActive = false;
 
     // Start is called before the first frame update
@@ -30,12 +31,22 @@ public class BirdScript : MonoBehaviour
             {
                 turbo.Play();
             }
+
+            if (!explosion.isPlaying)
+            {
+                explosion.Play();
+            }
         }
         else
         {
             if (turbo.isPlaying)
             {
                 turbo.Stop();
+            }
+
+            if (explosion.isPlaying)
+            {
+                explosion.Stop();
             }
         }
         
