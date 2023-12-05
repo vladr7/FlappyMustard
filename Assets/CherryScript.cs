@@ -6,6 +6,7 @@ using UnityEngine;
 public class CherryScript : MonoBehaviour
 {
     public StrawberryScript strawberryScript;
+    public LogicManager logicManager;
     
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,11 @@ public class CherryScript : MonoBehaviour
             if (this.gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
                 strawberryScript.SpawnStrawberry(transform.position.x, transform.position.y);
+                logicManager.IncreaseScore(1);
             }
         }
 
     }
+    
+    
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class LogicManager : MonoBehaviour
 {
 
+    public int score = 0;
+    
     void Start()
     {
         
@@ -12,5 +14,10 @@ public class LogicManager : MonoBehaviour
 
     void Update()
     {
+    }
+    
+    public void IncreaseScore(int amount)
+    {
+        score += amount;
     }
 }
