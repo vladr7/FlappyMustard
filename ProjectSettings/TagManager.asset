@@ -11,6 +11,9 @@ TagManager:
   - Turbo
   - MiddlePlank
   - NextFruit
+  - Cherry
+  - Strawberry
+  - Grape
   layers:
   - Default
   - TransparentFX

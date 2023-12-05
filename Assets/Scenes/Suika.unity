@@ -135,9 +135,10 @@ GameObject:
   - component: {fileID: 20003351}
   - component: {fileID: 20003350}
   - component: {fileID: 20003349}
+  - component: {fileID: 20003353}
   m_Layer: 0
   m_Name: Cherry
-  m_TagString: Untagged
+  m_TagString: Cherry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,6 +272,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2127540532}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &20003353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20003348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &230557589
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +657,7 @@ GameObject:
   - component: {fileID: 989846799}
   m_Layer: 0
   m_Name: Grape
-  m_TagString: Untagged
+  m_TagString: Grape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -834,9 +847,10 @@ GameObject:
   - component: {fileID: 1399746744}
   - component: {fileID: 1399746743}
   - component: {fileID: 1399746742}
+  - component: {fileID: 1399746745}
   m_Layer: 0
   m_Name: Strawberry
-  m_TagString: Untagged
+  m_TagString: Strawberry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -970,6 +984,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1399746745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399746740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5d2817983d0419d91941a353d6e9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1820333726
 GameObject:
   m_ObjectHideFlags: 0
