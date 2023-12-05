@@ -25,6 +25,11 @@ public class FruitSpawnerScript : MonoBehaviour
             SpawnFruit();
         }
 
+        PlayerMouseControl();
+    }
+
+    private void PlayerMouseControl()
+    {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Camera.main.transform.position.y));
         float clampedX = Mathf.Clamp(mousePosition.x, -horizontalLimit, horizontalLimit);
