@@ -284,8 +284,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strawberryScript: {fileID: 1399746745}
   logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 1399746740}
+  grapes: {fileID: 989846797}
+  lemon: {fileID: 1951111124}
+  orange: {fileID: 1421543541}
+  apple: {fileID: 886093656}
+  pear: {fileID: 1955313286}
+  peach: {fileID: 1522490867}
+  pineapple: {fileID: 484412053}
+  melon: {fileID: 184114251}
+  watermelon: {fileID: 1799928408}
 --- !u!1 &110352385
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +524,7 @@ GameObject:
   - component: {fileID: 184114255}
   - component: {fileID: 184114254}
   - component: {fileID: 184114253}
+  - component: {fileID: 184114256}
   m_Layer: 0
   m_Name: Melon
   m_TagString: Melon
@@ -531,8 +541,8 @@ Transform:
   m_GameObject: {fileID: 184114251}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 120.9, y: -7.65, z: -0.2577219}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalPosition: {x: 120.90001, y: -7.6500006, z: -0.2577219}
+  m_LocalScale: {x: 3.7, y: 3.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -651,6 +661,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &184114256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184114251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 0}
+  apple: {fileID: 0}
+  pear: {fileID: 0}
+  peach: {fileID: 0}
+  pineapple: {fileID: 0}
+  melon: {fileID: 0}
+  watermelon: {fileID: 1799928408}
 --- !u!1 &230557589
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +875,7 @@ GameObject:
   - component: {fileID: 484412057}
   - component: {fileID: 484412056}
   - component: {fileID: 484412055}
+  - component: {fileID: 484412058}
   m_Layer: 0
   m_Name: Pineapple
   m_TagString: Pineapple
@@ -858,8 +892,8 @@ Transform:
   m_GameObject: {fileID: 484412053}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 96.97, y: -5.67, z: -0.2577219}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalPosition: {x: 96.97, y: -5.670001, z: -0.2577219}
+  m_LocalScale: {x: 3.3, y: 3.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -978,6 +1012,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &484412058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484412053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 0}
+  apple: {fileID: 0}
+  pear: {fileID: 0}
+  peach: {fileID: 0}
+  pineapple: {fileID: 0}
+  melon: {fileID: 184114251}
+  watermelon: {fileID: 0}
 --- !u!1 &806720490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1150,7 @@ GameObject:
   - component: {fileID: 886093660}
   - component: {fileID: 886093659}
   - component: {fileID: 886093658}
+  - component: {fileID: 886093661}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Apple
@@ -1110,7 +1168,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 46.8, y: -5.3, z: -0.2577219}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -1229,6 +1287,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &886093661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886093656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 0}
+  apple: {fileID: 0}
+  pear: {fileID: 1955313286}
+  peach: {fileID: 0}
+  pineapple: {fileID: 0}
+  melon: {fileID: 0}
+  watermelon: {fileID: 0}
 --- !u!1 &927988061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +1452,7 @@ GameObject:
   - component: {fileID: 989846801}
   - component: {fileID: 989846800}
   - component: {fileID: 989846799}
+  - component: {fileID: 989846802}
   m_Layer: 0
   m_Name: Grape
   m_TagString: Grape
@@ -1387,7 +1469,7 @@ Transform:
   m_GameObject: {fileID: 989846797}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.6, y: -5.2, z: -0.2577219}
+  m_LocalPosition: {x: 16.600002, y: -5.2, z: -0.2577219}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1507,6 +1589,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &989846802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989846797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 1951111124}
+  orange: {fileID: 0}
+  apple: {fileID: 0}
+  pear: {fileID: 0}
+  peach: {fileID: 0}
+  pineapple: {fileID: 0}
+  melon: {fileID: 0}
+  watermelon: {fileID: 0}
 --- !u!1 &1072214610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,9 +1965,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1399746740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5d2817983d0419d91941a353d6e9e6, type: 3}
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 1399746740}
+  grapes: {fileID: 989846797}
+  lemon: {fileID: 1951111124}
+  orange: {fileID: 1421543541}
+  apple: {fileID: 886093656}
+  pear: {fileID: 1955313286}
+  peach: {fileID: 1522490867}
+  pineapple: {fileID: 484412053}
+  melon: {fileID: 184114251}
+  watermelon: {fileID: 1799928408}
 --- !u!1 &1421543541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,6 +1991,7 @@ GameObject:
   - component: {fileID: 1421543545}
   - component: {fileID: 1421543544}
   - component: {fileID: 1421543543}
+  - component: {fileID: 1421543546}
   m_Layer: 0
   m_Name: Orange
   m_TagString: Orange
@@ -1892,7 +2009,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 35.8, y: -4.8, z: -0.2577219}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -2011,6 +2128,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1421543546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421543541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 0}
+  apple: {fileID: 886093656}
+  pear: {fileID: 0}
+  peach: {fileID: 0}
+  pineapple: {fileID: 0}
+  melon: {fileID: 0}
+  watermelon: {fileID: 0}
 --- !u!1 &1522490867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2163,7 @@ GameObject:
   - component: {fileID: 1522490871}
   - component: {fileID: 1522490870}
   - component: {fileID: 1522490869}
+  - component: {fileID: 1522490872}
   m_Layer: 0
   m_Name: Peach
   m_TagString: Peach
@@ -2039,8 +2180,8 @@ Transform:
   m_GameObject: {fileID: 1522490867}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 75.18, y: -5.93, z: -0.2577219}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: 75.18001, y: -5.9299994, z: -0.2577219}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -2159,6 +2300,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1522490872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522490867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 0}
+  apple: {fileID: 0}
+  pear: {fileID: 0}
+  peach: {fileID: 0}
+  pineapple: {fileID: 484412053}
+  melon: {fileID: 0}
+  watermelon: {fileID: 0}
 --- !u!1 &1581487513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,6 +2419,7 @@ GameObject:
   - component: {fileID: 1799928412}
   - component: {fileID: 1799928411}
   - component: {fileID: 1799928410}
+  - component: {fileID: 1799928413}
   m_Layer: 0
   m_Name: Watermelon
   m_TagString: Watermelon
@@ -2272,7 +2437,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 154.6, y: -5.2, z: -0.2577219}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -2391,6 +2556,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1799928413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799928408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 0}
+  apple: {fileID: 0}
+  pear: {fileID: 0}
+  peach: {fileID: 0}
+  pineapple: {fileID: 0}
+  melon: {fileID: 0}
+  watermelon: {fileID: 0}
 --- !u!1 &1820333726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,6 +2854,7 @@ GameObject:
   - component: {fileID: 1951111128}
   - component: {fileID: 1951111127}
   - component: {fileID: 1951111126}
+  - component: {fileID: 1951111129}
   m_Layer: 0
   m_Name: Lemon
   m_TagString: Lemon
@@ -2682,8 +2871,8 @@ Transform:
   m_GameObject: {fileID: 1951111124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.7, y: -4.6, z: -0.2577219}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 28.7, y: -4.5999994, z: -0.2577219}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -2802,6 +2991,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1951111129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951111124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 1421543541}
+  apple: {fileID: 0}
+  pear: {fileID: 0}
+  peach: {fileID: 0}
+  pineapple: {fileID: 0}
+  melon: {fileID: 0}
+  watermelon: {fileID: 0}
 --- !u!1 &1955313286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,6 +3026,7 @@ GameObject:
   - component: {fileID: 1955313290}
   - component: {fileID: 1955313289}
   - component: {fileID: 1955313288}
+  - component: {fileID: 1955313291}
   m_Layer: 0
   m_Name: Pear
   m_TagString: Pear
@@ -2830,8 +3043,8 @@ Transform:
   m_GameObject: {fileID: 1955313286}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 60.2, y: -5.1, z: -0.2577219}
-  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
+  m_LocalPosition: {x: 60.2, y: -5.0999994, z: -0.2577219}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2127540532}
@@ -2950,6 +3163,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1955313291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955313286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db624fc6523ba4983802f812f8b043ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logicManager: {fileID: 1235983214}
+  strawberry: {fileID: 0}
+  grapes: {fileID: 0}
+  lemon: {fileID: 0}
+  orange: {fileID: 0}
+  apple: {fileID: 0}
+  pear: {fileID: 0}
+  peach: {fileID: 1522490867}
+  pineapple: {fileID: 0}
+  melon: {fileID: 0}
+  watermelon: {fileID: 0}
 --- !u!1 &1987009405
 GameObject:
   m_ObjectHideFlags: 0

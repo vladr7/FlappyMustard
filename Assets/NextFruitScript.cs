@@ -18,7 +18,7 @@ public class NextFruitScript : MonoBehaviour
         int childrenCount = fruits.transform.childCount;
         if (childrenCount == 0) return null;
 
-        int randomIndex = Random.Range(0, childrenCount);
+        int randomIndex = Random.Range(0, 4);
         return fruits.transform.GetChild(randomIndex).gameObject;
     }
 
