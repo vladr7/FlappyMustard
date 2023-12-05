@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FruitSpawnerScript : MonoBehaviour
 {
-    public GameObject fruits;
     public float horizontalLimit = 8f;
+    public LogicManager logicManager;
 
     // Start is called before the first frame update
     void Start()
@@ -36,20 +36,9 @@ public class FruitSpawnerScript : MonoBehaviour
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
 
-
-    public GameObject GetRandomFruit()
-    {
-        int childrenCount = fruits.transform.childCount;
-        if (childrenCount == 0) return null;
-
-        int randomIndex = Random.Range(0, childrenCount);
-        return fruits.transform.GetChild(randomIndex).gameObject;
-    }
-
-
     private void SpawnFruit()
     {
-        GameObject fruit = GetRandomFruit();
-        Instantiate(fruit, transform.position, transform.rotation);
+        Instantiate(logicManager.currentFruit, transform.position, transform.rotation);
+        logicManager.UpdateCurrentAndNextFruit();
     }
 }
