@@ -15,6 +15,14 @@ TagManager:
   - Strawberry
   - Grape
   - CurrentFruit
+  - Lemon
+  - Orange
+  - Apple
+  - Pear
+  - Peach
+  - Pineapple
+  - Melon
+  - Watermelon
   layers:
   - Default
   - TransparentFX
