@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FruitSpawnerScript : MonoBehaviour
 {
     public float horizontalLimit = 8f;
     public NextFruitScript nextFruitScript;
     private GameObject _currentFruit;
+    public GameObject currentFruitDrop;
 
     void Start()
     {
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         _currentFruit = nextFruitScript.GetRandomFruit();
+        currentFruitDrop.GetComponent<SpriteRenderer>().sprite = _currentFruit.GetComponent<SpriteRenderer>().sprite;
     }
 
     void Update()
@@ -42,6 +45,7 @@ public class FruitSpawnerScript : MonoBehaviour
     {
         Instantiate(_currentFruit, transform.position, transform.rotation);
         _currentFruit = nextFruitScript.nextFruit;
+        currentFruitDrop.GetComponent<SpriteRenderer>().sprite = _currentFruit.GetComponent<SpriteRenderer>().sprite;
         nextFruitScript.UpdateNextFruit();
     }
 }
