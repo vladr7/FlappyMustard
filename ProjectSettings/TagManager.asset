@@ -10,6 +10,7 @@ TagManager:
   - PipeSpawner
   - Turbo
   - MiddlePlank
+  - NextFruit
   layers:
   - Default
   - TransparentFX

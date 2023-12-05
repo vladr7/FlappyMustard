@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalLimit: 8
-  logicManager: {fileID: 1235983214}
+  nextFruitScript: {fileID: 0}
 --- !u!4 &230557591
 Transform:
   m_ObjectHideFlags: 0
@@ -807,9 +807,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a7517019c7140458edaf22cea2fccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruits: {fileID: 2127540531}
-  currentFruit: {fileID: 0}
-  nextFruit: {fileID: 0}
 --- !u!4 &1235983215
 Transform:
   m_ObjectHideFlags: 0
@@ -1147,9 +1144,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1912950994}
   - component: {fileID: 1912950993}
+  - component: {fileID: 1912950995}
   m_Layer: 0
   m_Name: Next Fruit
-  m_TagString: Untagged
+  m_TagString: NextFruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1221,6 +1219,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1912950995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912950992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab000d3b2cf649d090df3f54e3a8f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruits: {fileID: 2127540531}
+  nextFruit: {fileID: 0}
 --- !u!1 &1987009405
 GameObject:
   m_ObjectHideFlags: 0

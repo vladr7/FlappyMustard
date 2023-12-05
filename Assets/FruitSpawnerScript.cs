@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class FruitSpawnerScript : MonoBehaviour
 {
     public float horizontalLimit = 8f;
-    public LogicManager logicManager;
+    public NextFruitScript nextFruitScript;
+    private GameObject _currentFruit;
 
-    // Start is called before the first frame update
     void Start()
     {
+        nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
+        _currentFruit = nextFruitScript.GetRandomFruit();
     }
 
-    // Update is called once per frame
     void Update()
     {
         UserControls();
@@ -20,7 +22,7 @@ public class FruitSpawnerScript : MonoBehaviour
 
     private void UserControls()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             SpawnFruit();
         }
@@ -38,7 +40,8 @@ public class FruitSpawnerScript : MonoBehaviour
 
     private void SpawnFruit()
     {
-        Instantiate(logicManager.currentFruit, transform.position, transform.rotation);
-        logicManager.UpdateCurrentAndNextFruit();
+        Instantiate(_currentFruit, transform.position, transform.rotation);
+        _currentFruit = nextFruitScript.nextFruit;
+        nextFruitScript.UpdateNextFruit();
     }
 }
