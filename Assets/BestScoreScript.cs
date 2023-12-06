@@ -11,7 +11,7 @@ public class BestScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bestScoreText.text = "Best Score: " + logicManager.bestScore;
+        bestScoreText.text = "Best Score\n" + logicManager.bestScore;
     }
 
     // Update is called once per frame
