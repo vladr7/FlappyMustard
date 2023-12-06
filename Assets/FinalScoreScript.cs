@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class StrawberryScript : MonoBehaviour
+public class FinalScoreScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,9 +15,9 @@ public class StrawberryScript : MonoBehaviour
     {
         
     }
-
-    public void SpawnStrawberry(float x, float y)
+    
+    public void UpdateFinalScore(int score)
     {
-        Instantiate(gameObject, new Vector3(x, y, 0), Quaternion.identity);
+        gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Your score\n" + score;
     }
 }

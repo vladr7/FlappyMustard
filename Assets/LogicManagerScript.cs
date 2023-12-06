@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LogicManager : MonoBehaviour
 {
 
     public int score = 0;
     public int bestScore = 0;
+    public GameObject gameOverScreen;
+    public FinalScoreScript finalScoreScript;
     
     void Start()
     {
@@ -29,5 +32,23 @@ public class LogicManager : MonoBehaviour
             bestScore = score;
             PlayerPrefs.SetInt("BEST_SCORE", bestScore);
         }
+    }
+    
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GameOver()
+    {
+        finalScoreScript.UpdateFinalScore(score);
+        SetBestScore();
+        // deadBirdSFX.Play();
+        gameOverScreen.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
