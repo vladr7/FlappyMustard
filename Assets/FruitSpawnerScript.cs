@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 public class FruitSpawnerScript : MonoBehaviour
 {
-    public float horizontalLimit = 8f;
+    public float horizontalLimit = 10.5f;
     public NextFruitScript nextFruitScript;
     private GameObject _currentFruit;
     public GameObject currentFruitDrop;
