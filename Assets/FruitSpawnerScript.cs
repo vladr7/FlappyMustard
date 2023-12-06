@@ -11,9 +11,13 @@ public class FruitSpawnerScript : MonoBehaviour
     public NextFruitScript nextFruitScript;
     private GameObject _currentFruit;
     public GameObject currentFruitDrop;
+    public float spawnRate = 1f;
+    private float _lastSpawnTime;
+    private bool _firstSpawn = true;
 
     void Start()
     {
+        _lastSpawnTime = spawnRate;
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         _currentFruit = nextFruitScript.GetRandomFruit();
         UpdateFruitDropUi();
@@ -26,9 +30,13 @@ public class FruitSpawnerScript : MonoBehaviour
 
     private void UserControls()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && ((Time.time - _lastSpawnTime >= spawnRate) || _firstSpawn))
         {
+            _firstSpawn = false;
+            _lastSpawnTime = Time.time;
+            currentFruitDrop.SetActive(false);
             SpawnFruit();
+            Invoke(nameof(ManageCurrentAndNextFruitAfterSpawning), 1f);
         }
         
         PlayerMouseControl();
@@ -45,9 +53,14 @@ public class FruitSpawnerScript : MonoBehaviour
     private void SpawnFruit()
     {
         Instantiate(_currentFruit, transform.position, transform.rotation);
+    }
+
+    private void ManageCurrentAndNextFruitAfterSpawning()
+    {
         _currentFruit = nextFruitScript.nextFruit;
         UpdateFruitDropUi();
         nextFruitScript.UpdateNextFruit();
+        currentFruitDrop.SetActive(true);
     }
 
     private void UpdateFruitDropUi()
