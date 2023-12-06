@@ -16,8 +16,11 @@ public class FinalScoreScript : MonoBehaviour
         
     }
     
-    public void UpdateFinalScore(int score)
+    public void UpdateFinalScore(int score, bool newBestScore)
     {
-        gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Your score\n" + score;
+        if(newBestScore)
+            gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "New best score!\n" + score;
+        else
+            gameObject.GetComponent<TMPro.TextMeshProUGUI>().text = "Your score\n" + score;
     }
 }

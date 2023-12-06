@@ -30,7 +30,12 @@ public class LogicManager : MonoBehaviour
         if (score > bestScore)
         {
             bestScore = score;
+            finalScoreScript.UpdateFinalScore(score, true);
             PlayerPrefs.SetInt("BEST_SCORE", bestScore);
+        }
+        else
+        {
+            finalScoreScript.UpdateFinalScore(score, false);
         }
     }
     
@@ -41,7 +46,6 @@ public class LogicManager : MonoBehaviour
 
     public void GameOver()
     {
-        finalScoreScript.UpdateFinalScore(score);
         SetBestScore();
         // deadBirdSFX.Play();
         gameOverScreen.SetActive(true);
