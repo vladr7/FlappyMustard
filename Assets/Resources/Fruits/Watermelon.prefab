@@ -47,10 +47,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 7.24
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -162,13 +162,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicManager: {fileID: 0}
-  strawberry: {fileID: 0}
-  grapes: {fileID: 0}
-  lemon: {fileID: 0}
-  orange: {fileID: 0}
-  apple: {fileID: 0}
-  pear: {fileID: 0}
-  peach: {fileID: 0}
-  pineapple: {fileID: 0}
-  melon: {fileID: 0}
-  watermelon: {fileID: 0}
