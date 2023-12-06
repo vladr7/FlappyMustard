@@ -44,14 +44,20 @@ public class NextFruitScript : MonoBehaviour
     
     private int GetItemBasedOnScore()
     {
-        float[] chances = new float[6]; // Array to hold chances for each item
-        float decrement = Mathf.Min(logicManager.score / 100 * 0.01f, 0.33f); // Calculate the decrement
+        float[] chances = new float[8]; // Array to hold chances for each item, up to item 7
 
+        // Basic chances setup
+        float decrement = Mathf.Min(logicManager.score / 100 * 0.01f, 0.33f);
         chances[0] = chances[1] = chances[2] = 0.33f - decrement;
         chances[3] = 0.01f + decrement * 3;
-        if (logicManager.score >= 1500) chances[4] = 0.05f;
-        if (logicManager.score >= 2000) chances[5] = 0.05f;
 
+        // Adjust chances based on score thresholds
+        if (logicManager.score > 100) chances[4] += 0.10f;
+        if (logicManager.score > 300) chances[5] += 0.10f;
+        if (logicManager.score > 500) chances[6] += 0.10f;
+        if (logicManager.score > 800) chances[7] += 0.10f;
+
+        // Normalize chances
         float totalChance = 0f;
         for (int i = 0; i < chances.Length; i++)
         {
@@ -62,6 +68,19 @@ public class NextFruitScript : MonoBehaviour
             chances[i] /= totalChance;
         }
 
+        // Generate a random item, ensuring it's not the same as the last
+        int newItem;
+        do
+        {
+            newItem = GenerateRandomItem(chances);
+        } while (newItem == lastItem);
+
+        lastItem = newItem; // Update the last generated item
+        return newItem;
+    }
+
+    private int GenerateRandomItem(float[] chances)
+    {
         float randomPoint = Random.Range(0f, 1f);
         float currentPoint = 0f;
         for (int i = 0; i < chances.Length; i++)
@@ -72,7 +91,6 @@ public class NextFruitScript : MonoBehaviour
                 return i;
             }
         }
-
-        return 0; 
+        return 0; // Default return
     }
 }
