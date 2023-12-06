@@ -21,20 +21,11 @@ public enum FruitType : int
 public class FruitScript : MonoBehaviour
 {
     public LogicManager logicManager;
-    public GameObject strawberry;
-    public GameObject grapes;
-    public GameObject lemon;
-    public GameObject orange;
-    public GameObject apple;
-    public GameObject pear;
-    public GameObject peach;
-    public GameObject pineapple;
-    public GameObject melon;
-    public GameObject watermelon;
 
     // Start is called before the first frame update
     void Start()
     {
+        logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
     }
 
     // Update is called once per frame
@@ -165,39 +156,50 @@ public class FruitScript : MonoBehaviour
     
     public void SpawnFruit(float x, float y, FruitType fruitType)
     {
-        switch (fruitType)
+        string path = "Fruits/" + fruitType.ToString(); 
+        GameObject fruitPrefab = Resources.Load<GameObject>(path);
+        if (fruitPrefab != null)
         {
-            case FruitType.Strawberry:
-                Instantiate(strawberry, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Grape:
-                Instantiate(grapes, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Lemon:
-                Instantiate(lemon, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Orange:
-                Instantiate(orange, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Apple:
-                Instantiate(apple, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Pear:
-                Instantiate(pear, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Peach:
-                Instantiate(peach, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Pineapple:
-                Instantiate(pineapple, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Melon:
-                Instantiate(melon, new Vector3(x, y, 0), Quaternion.identity);
-                break;
-            case FruitType.Watermelon:
-                Instantiate(watermelon, new Vector3(x, y, 0), Quaternion.identity);
-                break;
+            Instantiate(fruitPrefab, new Vector3(x, y, 0), Quaternion.identity);
         }
+        else
+        {
+            Debug.LogError("Prefab not found for: " + fruitType.ToString());
+        }
+
+        // switch (fruitType)
+        // {
+        //     case FruitType.Strawberry:
+        //         Instantiate(strawberry, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Grape:
+        //         Instantiate(grapes, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Lemon:
+        //         Instantiate(lemon, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Orange:
+        //         Instantiate(orange, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Apple:
+        //         Instantiate(apple, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Pear:
+        //         Instantiate(pear, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Peach:
+        //         Instantiate(peach, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Pineapple:
+        //         Instantiate(pineapple, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Melon:
+        //         Instantiate(melon, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        //     case FruitType.Watermelon:
+        //         Instantiate(watermelon, new Vector3(x, y, 0), Quaternion.identity);
+        //         break;
+        // }
     }
     
     

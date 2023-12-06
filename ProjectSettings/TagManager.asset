@@ -23,6 +23,7 @@ TagManager:
   - Pineapple
   - Melon
   - Watermelon
+  - LogicManager
   layers:
   - Default
   - TransparentFX
