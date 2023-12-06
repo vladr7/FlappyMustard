@@ -2615,7 +2615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7696320767922268306, guid: b4d997be7435443fea40d5b427ca910c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2633,6 +2633,10 @@ PrefabInstance:
     - target: {fileID: 2833197866493576542, guid: 9cdbc23828b7249739789789e92ea4ed, type: 3}
       propertyPath: m_Name
       value: Cherry
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833197866493576542, guid: 9cdbc23828b7249739789789e92ea4ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3593462644976549369, guid: 9cdbc23828b7249739789789e92ea4ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2783,6 +2787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melon
       objectReference: {fileID: 0}
+    - target: {fileID: 7297342440900884004, guid: 242ff60438d4b4973a08ea1e9085bf5f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2847,6 +2855,10 @@ PrefabInstance:
     - target: {fileID: 6511911840013137366, guid: 04c8dca1378524ecf82ec46b4c07702b, type: 3}
       propertyPath: m_Name
       value: Lemon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511911840013137366, guid: 04c8dca1378524ecf82ec46b4c07702b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2947,7 +2959,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9098934610598690288, guid: 08539148535b84dc782a925496348dfe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3014,6 +3026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orange
       objectReference: {fileID: 0}
+    - target: {fileID: 7043268908222725583, guid: eb22d14949f8e45f2b868692feb0451d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3078,6 +3094,10 @@ PrefabInstance:
     - target: {fileID: 8134736717584527365, guid: c3cc2aaed6b7b40a0b01cbd554786751, type: 3}
       propertyPath: m_Name
       value: Pineapple
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134736717584527365, guid: c3cc2aaed6b7b40a0b01cbd554786751, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3144,6 +3164,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pear
       objectReference: {fileID: 0}
+    - target: {fileID: 7842620252528171061, guid: 687fd8c30ee89405c9caa568687230f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3160,6 +3184,10 @@ PrefabInstance:
     - target: {fileID: 671680694308734333, guid: d732148f61cad4856bf349ea850a5f9c, type: 3}
       propertyPath: m_Name
       value: Apple
+      objectReference: {fileID: 0}
+    - target: {fileID: 671680694308734333, guid: d732148f61cad4856bf349ea850a5f9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5362378052235558115, guid: d732148f61cad4856bf349ea850a5f9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3266,6 +3294,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Peach
       objectReference: {fileID: 0}
+    - target: {fileID: 1422028933156031126, guid: 3aa6467d9aa55490d9f272c10bf2ab0c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7324927134182982394, guid: 3aa6467d9aa55490d9f272c10bf2ab0c, type: 3}
       propertyPath: pineapple
       value: 
@@ -3330,6 +3362,10 @@ PrefabInstance:
     - target: {fileID: 1365752664505412392, guid: cc5f30e058b3d4b99b34ddda7fe0be62, type: 3}
       propertyPath: m_Name
       value: Watermelon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365752664505412392, guid: cc5f30e058b3d4b99b34ddda7fe0be62, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3586093332198650631, guid: cc5f30e058b3d4b99b34ddda7fe0be62, type: 3}
       propertyPath: logicManager
