@@ -20,6 +20,7 @@ public class FruitSpawnerScript : MonoBehaviour
         _lastSpawnTime = spawnRate;
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         _currentFruit = nextFruitScript.GetRandomFruit();
+        _currentFruit.SetActive(true);
         UpdateFruitDropUi();
     }
 
@@ -58,6 +59,7 @@ public class FruitSpawnerScript : MonoBehaviour
     private void ManageCurrentAndNextFruitAfterSpawning()
     {
         _currentFruit = nextFruitScript.nextFruit;
+        _currentFruit.SetActive(true);
         UpdateFruitDropUi();
         nextFruitScript.UpdateNextFruit();
         currentFruitDrop.SetActive(true);
