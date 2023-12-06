@@ -39,6 +39,7 @@ public class NextFruitScript : MonoBehaviour
     {
         nextFruit = GetRandomFruit();
         gameObject.GetComponent<SpriteRenderer>().sprite = nextFruit.GetComponent<SpriteRenderer>().sprite;
+        gameObject.transform.localScale = nextFruit.transform.localScale;
     }
     
     private int GetItemBasedOnScore()

@@ -67,7 +67,7 @@ public class FruitSpawnerScript : MonoBehaviour
 
     private void UpdateFruitDropUi()
     {
-        currentFruitDrop.transform.localScale = _currentFruit.transform.localScale * 0.6f;
-        currentFruitDrop.GetComponent<SpriteRenderer>().sprite = _currentFruit.GetComponent<SpriteRenderer>().sprite;
+            currentFruitDrop.transform.localScale = _currentFruit.transform.localScale * 0.6f;
+            currentFruitDrop.GetComponent<SpriteRenderer>().sprite = _currentFruit.GetComponent<SpriteRenderer>().sprite;
     }
 }
