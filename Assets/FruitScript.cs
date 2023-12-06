@@ -167,39 +167,7 @@ public class FruitScript : MonoBehaviour
             Debug.LogError("Prefab not found for: " + fruitType.ToString());
         }
 
-        // switch (fruitType)
-        // {
-        //     case FruitType.Strawberry:
-        //         Instantiate(strawberry, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Grape:
-        //         Instantiate(grapes, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Lemon:
-        //         Instantiate(lemon, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Orange:
-        //         Instantiate(orange, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Apple:
-        //         Instantiate(apple, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Pear:
-        //         Instantiate(pear, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Peach:
-        //         Instantiate(peach, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Pineapple:
-        //         Instantiate(pineapple, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Melon:
-        //         Instantiate(melon, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        //     case FruitType.Watermelon:
-        //         Instantiate(watermelon, new Vector3(x, y, 0), Quaternion.identity);
-        //         break;
-        // }
+        
     }
     
     
