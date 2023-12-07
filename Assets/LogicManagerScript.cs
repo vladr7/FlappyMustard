@@ -48,6 +48,7 @@ public class LogicManager : MonoBehaviour
     {
         SetBestScore();
         // deadBirdSFX.Play();
+        Time.timeScale = 0.0f;
         gameOverScreen.SetActive(true);
     }
 
