@@ -164,6 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logicManager: {fileID: 0}
   audioSource: {fileID: 2185077130369861980}
+  whiteSplash: {fileID: 1472960713564456325, guid: 97fbf0c380bb44bcc97666c40db507ad, type: 3}
 --- !u!82 &2185077130369861980
 AudioSource:
   m_ObjectHideFlags: 0
