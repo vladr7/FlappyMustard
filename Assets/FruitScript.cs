@@ -21,6 +21,7 @@ public enum FruitType : int
 public class FruitScript : MonoBehaviour
 {
     public LogicManager logicManager;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -160,7 +161,8 @@ public class FruitScript : MonoBehaviour
         GameObject fruitPrefab = Resources.Load<GameObject>(path);
         if (fruitPrefab != null)
         {
-            Instantiate(fruitPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            GameObject newFruit = Instantiate(fruitPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            newFruit.GetComponent<AudioSource>().Play();
         }
         else
         {
