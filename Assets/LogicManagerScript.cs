@@ -10,6 +10,8 @@ public class LogicManager : MonoBehaviour
     public int bestScore = 0;
     public GameObject gameOverScreen;
     public FinalScoreScript finalScoreScript;
+    public AudioSource gameOverSFX;
+    public GameObject mainTheme;
     
     void Start()
     {
@@ -47,7 +49,9 @@ public class LogicManager : MonoBehaviour
     public void GameOver()
     {
         SetBestScore();
-        // deadBirdSFX.Play();
+        gameOverSFX.Play();
+        AudioSource mainThemeAudioSource = mainTheme.GetComponent<AudioSource>();
+        mainThemeAudioSource.Stop();
         Time.timeScale = 0.0f;
         gameOverScreen.SetActive(true);
     }
