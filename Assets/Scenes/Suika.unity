@@ -1540,7 +1540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &951996045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2666,6 +2666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicManager: {fileID: 1235983214}
+  gameOverBackground: {fileID: 951996044}
 --- !u!61 &1914488847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2892,6 +2893,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1987009408}
+  - {fileID: 505791300}
   - {fileID: 689271081}
   - {fileID: 1907489823}
   - {fileID: 230557591}
@@ -2900,4 +2902,3 @@ SceneRoots:
   - {fileID: 951996045}
   - {fileID: 806720494}
   - {fileID: 136736354}
-  - {fileID: 505791300}
