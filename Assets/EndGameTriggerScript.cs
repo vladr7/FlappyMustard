@@ -17,7 +17,7 @@ public class EndGameTriggerScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Time.time - _lastEntryTime > 0.2f)
+        if (Time.time - _lastEntryTime > 2.5f)
         {
             gameOverBackground.SetActive(true);
             logicManager.GameOver();
