@@ -688,6 +688,7 @@ MonoBehaviour:
   nextFruitScript: {fileID: 0}
   currentFruitDrop: {fileID: 2127642097}
   spawnRate: 1
+  logicManager: {fileID: 1235983214}
 --- !u!4 &230557591
 Transform:
   m_ObjectHideFlags: 0

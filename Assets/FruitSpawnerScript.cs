@@ -14,6 +14,7 @@ public class FruitSpawnerScript : MonoBehaviour
     public float spawnRate = 1f;
     private float _lastSpawnTime;
     private bool _firstSpawn = true;
+    public LogicManager logicManager;
 
     void Start()
     {
@@ -33,6 +34,7 @@ public class FruitSpawnerScript : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && ((Time.time - _lastSpawnTime >= spawnRate) || _firstSpawn))
         {
+            if(logicManager.gameHasEnded) return;
             _firstSpawn = false;
             _lastSpawnTime = Time.time;
             currentFruitDrop.SetActive(false);

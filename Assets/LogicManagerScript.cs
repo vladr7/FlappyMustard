@@ -47,11 +47,13 @@ public class LogicManager : MonoBehaviour
     
     public void RestartGame()
     {
+        gameHasEnded = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GameOver()
     {
+        gameHasEnded = true;
         SetBestScore();
         gameOverSFX.Play();
         AudioSource mainThemeAudioSource = mainTheme.GetComponent<AudioSource>();
