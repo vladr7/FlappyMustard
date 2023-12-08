@@ -12,6 +12,7 @@ public class LogicManager : MonoBehaviour
     public FinalScoreScript finalScoreScript;
     public AudioSource gameOverSFX;
     public GameObject mainTheme;
+    public bool gameHasEnded = false;
     
     void Start()
     {
@@ -24,7 +25,10 @@ public class LogicManager : MonoBehaviour
     
     public void IncreaseScore(int amount)
     {
-        score += amount;
+        if (!gameHasEnded)
+        {
+            score += amount;
+        }
     }
     
     public void SetBestScore()
@@ -52,7 +56,6 @@ public class LogicManager : MonoBehaviour
         gameOverSFX.Play();
         AudioSource mainThemeAudioSource = mainTheme.GetComponent<AudioSource>();
         mainThemeAudioSource.Stop();
-        Time.timeScale = 0.0f;
         gameOverScreen.SetActive(true);
     }
 
