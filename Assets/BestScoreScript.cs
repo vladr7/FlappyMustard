@@ -17,6 +17,6 @@ public class BestScoreScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        bestScoreText.text = "Best Score\n" + logicManager.bestScore;
     }
 }

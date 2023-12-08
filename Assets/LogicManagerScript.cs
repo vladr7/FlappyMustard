@@ -17,6 +17,7 @@ public class LogicManager : MonoBehaviour
     void Start()
     {
         bestScore = PlayerPrefs.GetInt("BEST_SCORE", 0);
+        Debug.Log("Best score: " + bestScore);
     }
 
     void Update()
@@ -35,12 +36,14 @@ public class LogicManager : MonoBehaviour
     {
         if (score > bestScore)
         {
+            Debug.Log("New best score: " + score);
             bestScore = score;
             finalScoreScript.UpdateFinalScore(score, true);
             PlayerPrefs.SetInt("BEST_SCORE", bestScore);
         }
         else
         {
+            Debug.Log("Final score: " + score);
             finalScoreScript.UpdateFinalScore(score, false);
         }
     }
