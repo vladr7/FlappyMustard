@@ -53,9 +53,8 @@ public class NextFruitScript : MonoBehaviour
 
         // Adjust chances based on score thresholds
         if (logicManager.score > 100) chances[4] += 0.10f;
-        if (logicManager.score > 300) chances[5] += 0.10f;
-        if (logicManager.score > 500) chances[6] += 0.10f;
-        if (logicManager.score > 800) chances[7] += 0.10f;
+        if (logicManager.score > 300) chances[5] += 0.05f;
+        if (logicManager.score > 500) chances[6] += 0.03f;
 
         // Normalize chances
         float totalChance = 0f;
