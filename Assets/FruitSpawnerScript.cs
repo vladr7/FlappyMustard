@@ -47,9 +47,15 @@ public class FruitSpawnerScript : MonoBehaviour
 
     private void PlayerMouseControl()
     {
+        float localHorizontalLimit;
+        if(_currentFruit.CompareTag(FruitType.Cherry.ToString()) || _currentFruit.CompareTag(FruitType.Strawberry.ToString()))
+            localHorizontalLimit = horizontalLimit;
+        else
+            localHorizontalLimit = horizontalLimit - _currentFruit.transform.localScale.x;
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Camera.main.transform.position.y));
-        float clampedX = Mathf.Clamp(mousePosition.x, -horizontalLimit, horizontalLimit);
+        
+        float clampedX = Mathf.Clamp(mousePosition.x, -localHorizontalLimit, localHorizontalLimit);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
 
