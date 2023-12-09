@@ -95,4 +95,36 @@ public class PlayFabScript : MonoBehaviour
     {
         Debug.LogError($"Login failed: {error.GenerateErrorReport()}");
     }
+    
+    public async Task<bool> SetPlayerDisplayNameAsync(string displayName)
+    {
+        var request = new UpdateUserTitleDisplayNameRequest { DisplayName = displayName };
+        try
+        {
+            var result = await UpdateDisplayNameTask(request);
+            Debug.Log("Successfully updated display name to: " + result.DisplayName);
+            return true; // Return true for success
+        }
+        catch (PlayFabException error)
+        {
+            Debug.LogError("Failed to update display name: " + error.ToString());
+            return false; // Return false in case of failure
+        }
+    }
+
+    private Task<UpdateUserTitleDisplayNameResult> UpdateDisplayNameTask(UpdateUserTitleDisplayNameRequest request)
+    {
+        var tcs = new TaskCompletionSource<UpdateUserTitleDisplayNameResult>();
+
+        PlayFabClientAPI.UpdateUserTitleDisplayName(request, result =>
+            {
+                tcs.SetResult(result);
+            },
+            error =>
+            {
+                tcs.SetException(new PlayFabException(PlayFabExceptionCode.BuildError, "Failed to update display name"));
+            });
+
+        return tcs.Task;
+    }
 }

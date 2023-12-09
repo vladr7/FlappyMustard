@@ -32,6 +32,7 @@ public class LogicManager : MonoBehaviour
         {
             playFabScript.UpdatePlayerScore(100);
             DisplayLeaderboard();
+            SetPlayerName();
             score += amount;
         }
     }
@@ -43,6 +44,12 @@ public class LogicManager : MonoBehaviour
         {
             Debug.Log(playerNameScore.Name + ": " + playerNameScore.Score);
         }
+    }
+    
+    private async void SetPlayerName()
+    {
+        var result = await playFabScript.SetPlayerDisplayNameAsync("Mos Caciula");
+        Debug.Log("Player name set: " + result.ToString());
     }
 
     public void SetBestScore()
