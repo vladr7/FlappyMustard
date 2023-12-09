@@ -1925,6 +1925,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logicManager: {fileID: 1235983214}
   scoreText: {fileID: 1072214612}
+--- !u!1 &1198769885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198769887}
+  - component: {fileID: 1198769886}
+  m_Layer: 0
+  m_Name: PlayFabManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1198769886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198769885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888a72b53268b4c099c99f6a24fc7e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1198769887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198769885}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.7950075, y: -0.7032933, z: -0.3070477}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1235983213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,6 +2006,7 @@ MonoBehaviour:
   gameOverSFX: {fileID: 1235983216}
   mainTheme: {fileID: 505791298}
   gameHasEnded: 0
+  playFabScript: {fileID: 1198769886}
 --- !u!4 &1235983215
 Transform:
   m_ObjectHideFlags: 0
@@ -2926,3 +2971,4 @@ SceneRoots:
   - {fileID: 951996045}
   - {fileID: 806720494}
   - {fileID: 136736354}
+  - {fileID: 1198769887}

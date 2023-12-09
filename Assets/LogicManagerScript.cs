@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using PlayFab;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LogicManager : MonoBehaviour
 {
-
     public int score = 0;
     public int bestScore = 0;
     public GameObject gameOverScreen;
@@ -13,7 +13,8 @@ public class LogicManager : MonoBehaviour
     public AudioSource gameOverSFX;
     public GameObject mainTheme;
     public bool gameHasEnded = false;
-    
+    public PlayFabScript playFabScript;
+
     void Start()
     {
         bestScore = PlayerPrefs.GetInt("BEST_SCORE", 0);
@@ -23,21 +24,23 @@ public class LogicManager : MonoBehaviour
     void Update()
     {
     }
-    
+
     public void IncreaseScore(int amount)
     {
         if (!gameHasEnded)
         {
+            playFabScript.UpdatePlayerScore(100);
             score += amount;
         }
     }
-    
+
     public void SetBestScore()
     {
         if (score > bestScore)
         {
             Debug.Log("New best score: " + score);
             bestScore = score;
+            playFabScript.UpdatePlayerScore(bestScore);
             finalScoreScript.UpdateFinalScore(score, true);
             PlayerPrefs.SetInt("BEST_SCORE", bestScore);
         }
@@ -47,7 +50,7 @@ public class LogicManager : MonoBehaviour
             finalScoreScript.UpdateFinalScore(score, false);
         }
     }
-    
+
     public void RestartGame()
     {
         gameHasEnded = false;
