@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
+using PlayFab.ClientModels;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,7 +31,17 @@ public class LogicManager : MonoBehaviour
         if (!gameHasEnded)
         {
             playFabScript.UpdatePlayerScore(100);
+            DisplayLeaderboard();
             score += amount;
+        }
+    }
+    
+    private async void DisplayLeaderboard()
+    {
+        var result = await playFabScript.GetLeaderboardAsync();
+        foreach (var playerNameScore in result)
+        {
+            Debug.Log(playerNameScore.Name + ": " + playerNameScore.Score);
         }
     }
 
