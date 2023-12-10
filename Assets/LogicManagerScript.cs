@@ -46,7 +46,6 @@ public class LogicManager : MonoBehaviour
     {
         if (!gameHasEnded)
         {
-            playFabScript.UpdatePlayerScore(100);
             score += amount;
         }
     }
@@ -56,8 +55,9 @@ public class LogicManager : MonoBehaviour
         var result = await playFabScript.GetLeaderboardAsync();
         foreach (var playerNameScore in result)
         {
-            Debug.Log(playerNameScore.Name + ": " + playerNameScore.Score);
+            Debug.Log("Leaderboard: " + playerNameScore.Name + ": " + playerNameScore.Score);
         }
+        // leaderboardScript.UpdateLeaderboard(result);
     }
     
     private async void SetPlayerName()

@@ -2736,6 +2736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logicManager: {fileID: 1235983214}
   gameOverBackground: {fileID: 951996044}
+  endGameTriggerDelay: 2.5
 --- !u!61 &1914488847
 BoxCollider2D:
   m_ObjectHideFlags: 0
