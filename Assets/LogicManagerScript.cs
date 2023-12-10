@@ -60,8 +60,8 @@ public class LogicManager : MonoBehaviour
         {
             Debug.Log("Leaderboard: " + playerNameScore.Name + ": " + playerNameScore.Score);
         }
-        
         leaderboardScript.UpdateLeaderboard(result, userName);
+        leaderboardScrollScript.PopulateLeaderboard(result, userName);
     }
 
     private async void SetPlayerName()
@@ -104,15 +104,7 @@ public class LogicManager : MonoBehaviour
         AudioSource mainThemeAudioSource = mainTheme.GetComponent<AudioSource>();
         mainThemeAudioSource.Stop();
         gameOverScreen.SetActive(true);
-        var list = new List<PlayerNameScore>(
-            new PlayerNameScore[]
-            {
-                new PlayerNameScore("Player 1", 1000),
-                new PlayerNameScore("Player 2", 2000),
-                new PlayerNameScore("Player 3", 3000),
-                new PlayerNameScore("Player 4", 4000),
-            });
-        leaderboardScrollScript.PopulateLeaderboard(list, userName);
+        Invoke(nameof(DisplayLeaderboard), 0.3f);
     }
 
     public void QuitGame()
