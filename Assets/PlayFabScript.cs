@@ -12,7 +12,6 @@ public class PlayFabScript : MonoBehaviour
     void Start()
     {
         PlayFabSettings.TitleId = "C56EF";
-        SignIn();
     }
 
     // Update is called once per frame
@@ -79,21 +78,38 @@ public class PlayFabScript : MonoBehaviour
         return tcs.Task;
     }
     
-    public void SignIn()
+    public async Task<bool> SignInAsync()
     {
         string deviceUniqueIdentifier = SystemInfo.deviceUniqueIdentifier;
         var request = new LoginWithCustomIDRequest { CustomId = deviceUniqueIdentifier, CreateAccount = true };
-        PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
-    }
-    
-    private void OnLoginSuccess(LoginResult result)
-    {
-        Debug.Log("Login successful!");
+
+        try
+        {
+            await LoginWithCustomIDTask(request);
+            Debug.Log("Login successful!");
+            return true;
+        }
+        catch (PlayFabException error)
+        {
+            Debug.LogError($"Login failed: {error}");
+            return false;
+        }
     }
 
-    private void OnLoginFailure(PlayFabError error)
+    private Task LoginWithCustomIDTask(LoginWithCustomIDRequest request)
     {
-        Debug.LogError($"Login failed: {error.GenerateErrorReport()}");
+        var tcs = new TaskCompletionSource<bool>();
+
+        PlayFabClientAPI.LoginWithCustomID(request, result =>
+            {
+                tcs.SetResult(true);
+            },
+            error =>
+            {
+                tcs.SetException(new PlayFabException(PlayFabExceptionCode.BuildError, "Failed to login"));
+            });
+
+        return tcs.Task;
     }
     
     public async Task<bool> SetPlayerDisplayNameAsync(string displayName)

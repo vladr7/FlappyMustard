@@ -19,10 +19,23 @@ public class LogicManager : MonoBehaviour
     void Start()
     {
         bestScore = PlayerPrefs.GetInt("BEST_SCORE", 0);
-        
-        SetPlayerName();
-        DisplayLeaderboard();
+        ManageServerConnection();
         Debug.Log("Best score: " + bestScore);
+    }
+
+    private async void ManageServerConnection()
+    {
+        bool successSignIn = await playFabScript.SignInAsync();
+        if (successSignIn)
+        {
+            Debug.Log("Sign in successful");
+            SetPlayerName();
+            DisplayLeaderboard();
+        }
+        else
+        {
+            Debug.Log("Sign in failed");
+        }
     }
 
     void Update()
