@@ -20,7 +20,10 @@ public class LeaderboardScrollScript : MonoBehaviour
             GameObject newEntry = Instantiate(leaderboardEntryPrefab, leaderboardContent.transform); 
 
             TMP_Text entryText = newEntry.GetComponent<TMP_Text>();
-            entryText.text = $"{entry.Name}: {entry.Score}";
+            
+            // add rank number to entry
+            int rank = leaderboard.IndexOf(entry) + 1;
+            entryText.text = $"{rank}. {entry.Name}: {entry.Score}";
 
             if (entry.Name == currentUserName)
             {
