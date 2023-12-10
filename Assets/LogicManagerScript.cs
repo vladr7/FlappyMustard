@@ -16,6 +16,7 @@ public class LogicManager : MonoBehaviour
     public bool gameHasEnded = false;
     public PlayFabScript playFabScript;
     public LeaderboardScript leaderboardScript;
+    public string userName = "";
 
     void Start()
     {
@@ -50,7 +51,7 @@ public class LogicManager : MonoBehaviour
             score += amount;
         }
     }
-    
+
     private async void DisplayLeaderboard()
     {
         var result = await playFabScript.GetLeaderboardAsync();
@@ -58,13 +59,22 @@ public class LogicManager : MonoBehaviour
         {
             Debug.Log("Leaderboard: " + playerNameScore.Name + ": " + playerNameScore.Score);
         }
-        leaderboardScript.UpdateLeaderboard(result);
+
+        var list = new List<PlayerNameScore>(
+            new PlayerNameScore[]
+            {
+                new PlayerNameScore("Player 1", 1000),
+                new PlayerNameScore("Player 2", 2000),
+                new PlayerNameScore("Player 3", 3000),
+                new PlayerNameScore("Player 4", 4000),
+            });
+        leaderboardScript.UpdateLeaderboard(result, userName);
     }
-    
+
     private async void SetPlayerName()
     {
-        string userName = PlayerPrefs.GetString("USER_NAME", "");
-        if(userName == "")
+        userName = PlayerPrefs.GetString("USER_NAME", "");
+        if (userName == "")
             return;
         var result = await playFabScript.SetPlayerDisplayNameAsync(userName);
         Debug.Log("Player name set: " + result.ToString());

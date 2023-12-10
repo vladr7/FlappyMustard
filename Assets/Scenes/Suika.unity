@@ -477,9 +477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstPlaceText: {fileID: 1681659088}
-  secondPlaceText: {fileID: 0}
-  thirdPlaceText: {fileID: 0}
-  fourthPlaceText: {fileID: 0}
+  secondPlaceText: {fileID: 1189732659}
+  thirdPlaceText: {fileID: 310526034}
+  fourthPlaceText: {fileID: 1632846083}
 --- !u!1 &227873293
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,6 +2333,7 @@ MonoBehaviour:
   gameHasEnded: 0
   playFabScript: {fileID: 1198769886}
   leaderboardScript: {fileID: 211996138}
+  userName: 
 --- !u!4 &1235983215
 Transform:
   m_ObjectHideFlags: 0
@@ -2663,7 +2664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -663, y: -378}
+  m_AnchoredPosition: {x: -749, y: -381}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1632846083
@@ -2749,7 +2750,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -128.73279, w: -100.89862}
+  m_margin: {x: 0, y: 0, z: -284.48175, w: -20.512009}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
