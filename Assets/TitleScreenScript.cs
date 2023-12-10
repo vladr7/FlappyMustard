@@ -14,10 +14,7 @@ public class TitleScreenScript : MonoBehaviour
     public void Start()
     {
         userName = PlayerPrefs.GetString("USER_NAME", "");
-        if (userName == "")
-        {
-            inputField.gameObject.SetActive(true);
-        }
+        inputField.text = userName;
     }
     
     public void ReadInput()
