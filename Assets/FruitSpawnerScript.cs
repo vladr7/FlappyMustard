@@ -32,9 +32,9 @@ public class FruitSpawnerScript : MonoBehaviour
 
     private void UserControls()
     {
+        if(logicManager.isPaused || logicManager.gameHasEnded) return;
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && ((Time.time - _lastSpawnTime >= spawnRate) || _firstSpawn))
         {
-            if(logicManager.gameHasEnded) return;
             _firstSpawn = false;
             _lastSpawnTime = Time.time;
             currentFruitDrop.SetActive(false);

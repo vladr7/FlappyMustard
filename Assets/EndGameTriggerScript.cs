@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EndGameTriggerScript : MonoBehaviour
 {
     public LogicManager logicManager;
-    public GameObject gameOverBackground;
+    public GameObject papyrus;
     private float _lastEntryTime;
     public float endGameTriggerDelay = 2.5f;
     
@@ -20,7 +21,7 @@ public class EndGameTriggerScript : MonoBehaviour
     {
         if (Time.time - _lastEntryTime > endGameTriggerDelay && !logicManager.gameHasEnded)
         {
-            gameOverBackground.SetActive(true);
+            papyrus.SetActive(true);
             logicManager.GameOver();
         }
     }

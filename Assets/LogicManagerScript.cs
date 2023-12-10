@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
@@ -18,6 +19,10 @@ public class LogicManager : MonoBehaviour
     public LeaderboardScript leaderboardScript;
     public string userName = "";
     public LeaderboardScrollScript leaderboardScrollScript;
+    public GameObject pauseScreen;
+    public GameObject papyrus;
+    public AudioSource mainThemeAudioSource;
+    public bool isPaused = false;
 
     void Start()
     {
@@ -43,8 +48,44 @@ public class LogicManager : MonoBehaviour
 
     void Update()
     {
+        HandlePauseMenu();
     }
 
+    private void HandlePauseMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameHasEnded)
+                return;
+            if (Time.timeScale == 1)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+    }
+    
+    public void PauseGame()
+    {
+        isPaused = true;
+        Time.timeScale = 0;
+        papyrus.SetActive(true);
+        mainThemeAudioSource.Pause();
+        pauseScreen.SetActive(true);
+    }
+    
+    public void ResumeGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        papyrus.SetActive(false);
+        mainThemeAudioSource.Play();
+        pauseScreen.SetActive(false);
+    }
+    
     public void IncreaseScore(int amount)
     {
         if (!gameHasEnded)
