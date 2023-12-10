@@ -17,6 +17,7 @@ public class LogicManager : MonoBehaviour
     public PlayFabScript playFabScript;
     public LeaderboardScript leaderboardScript;
     public string userName = "";
+    public LeaderboardScrollScript leaderboardScrollScript;
 
     void Start()
     {
@@ -59,15 +60,7 @@ public class LogicManager : MonoBehaviour
         {
             Debug.Log("Leaderboard: " + playerNameScore.Name + ": " + playerNameScore.Score);
         }
-
-        var list = new List<PlayerNameScore>(
-            new PlayerNameScore[]
-            {
-                new PlayerNameScore("Player 1", 1000),
-                new PlayerNameScore("Player 2", 2000),
-                new PlayerNameScore("Player 3", 3000),
-                new PlayerNameScore("Player 4", 4000),
-            });
+        
         leaderboardScript.UpdateLeaderboard(result, userName);
     }
 
@@ -111,6 +104,15 @@ public class LogicManager : MonoBehaviour
         AudioSource mainThemeAudioSource = mainTheme.GetComponent<AudioSource>();
         mainThemeAudioSource.Stop();
         gameOverScreen.SetActive(true);
+        var list = new List<PlayerNameScore>(
+            new PlayerNameScore[]
+            {
+                new PlayerNameScore("Player 1", 1000),
+                new PlayerNameScore("Player 2", 2000),
+                new PlayerNameScore("Player 3", 3000),
+                new PlayerNameScore("Player 4", 4000),
+            });
+        leaderboardScrollScript.PopulateLeaderboard(list, userName);
     }
 
     public void QuitGame()
