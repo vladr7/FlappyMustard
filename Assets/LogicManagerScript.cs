@@ -19,6 +19,9 @@ public class LogicManager : MonoBehaviour
     void Start()
     {
         bestScore = PlayerPrefs.GetInt("BEST_SCORE", 0);
+        
+        SetPlayerName();
+        DisplayLeaderboard();
         Debug.Log("Best score: " + bestScore);
     }
 
@@ -31,8 +34,6 @@ public class LogicManager : MonoBehaviour
         if (!gameHasEnded)
         {
             playFabScript.UpdatePlayerScore(100);
-            DisplayLeaderboard();
-            SetPlayerName();
             score += amount;
         }
     }
@@ -48,7 +49,10 @@ public class LogicManager : MonoBehaviour
     
     private async void SetPlayerName()
     {
-        var result = await playFabScript.SetPlayerDisplayNameAsync("Mos Caciula");
+        string userName = PlayerPrefs.GetString("USER_NAME", "");
+        if(userName == "")
+            return;
+        var result = await playFabScript.SetPlayerDisplayNameAsync(userName);
         Debug.Log("Player name set: " + result.ToString());
     }
 
