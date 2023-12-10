@@ -15,6 +15,7 @@ public class LogicManager : MonoBehaviour
     public GameObject mainTheme;
     public bool gameHasEnded = false;
     public PlayFabScript playFabScript;
+    public LeaderboardScript leaderboardScript;
 
     void Start()
     {
@@ -57,7 +58,7 @@ public class LogicManager : MonoBehaviour
         {
             Debug.Log("Leaderboard: " + playerNameScore.Name + ": " + playerNameScore.Score);
         }
-        // leaderboardScript.UpdateLeaderboard(result);
+        leaderboardScript.UpdateLeaderboard(result);
     }
     
     private async void SetPlayerName()
