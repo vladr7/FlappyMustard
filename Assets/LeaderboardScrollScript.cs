@@ -21,7 +21,6 @@ public class LeaderboardScrollScript : MonoBehaviour
 
             TMP_Text entryText = newEntry.GetComponent<TMP_Text>();
             
-            // add rank number to entry
             int rank = leaderboard.IndexOf(entry) + 1;
             entryText.text = $"{rank}. {entry.Name}: {entry.Score}";
 
