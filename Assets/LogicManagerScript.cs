@@ -104,6 +104,7 @@ public class LogicManager : MonoBehaviour
         AudioSource mainThemeAudioSource = mainTheme.GetComponent<AudioSource>();
         mainThemeAudioSource.Stop();
         gameOverScreen.SetActive(true);
+        leaderboardScrollScript.gameObject.SetActive(true);
         Invoke(nameof(DisplayLeaderboard), 0.3f);
     }
 
