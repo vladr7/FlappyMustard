@@ -259,7 +259,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbfeadcac7cb4ee08c43f08866f3739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObjectPrefab: {fileID: 3593462644976549369, guid: 9cdbc23828b7249739789789e92ea4ed, type: 3}
+  fruitPrefabs:
+  - {fileID: 3593462644976549369, guid: 9cdbc23828b7249739789789e92ea4ed, type: 3}
+  - {fileID: 4518406143094507115, guid: 08539148535b84dc782a925496348dfe, type: 3}
+  - {fileID: 6729967770449874068, guid: b4d997be7435443fea40d5b427ca910c, type: 3}
+  - {fileID: 6223790563730305424, guid: 04c8dca1378524ecf82ec46b4c07702b, type: 3}
+  - {fileID: 2340098483240463293, guid: eb22d14949f8e45f2b868692feb0451d, type: 3}
+  - {fileID: 5362378052235558115, guid: d732148f61cad4856bf349ea850a5f9c, type: 3}
+  - {fileID: 2615199451620692814, guid: 687fd8c30ee89405c9caa568687230f0, type: 3}
+  - {fileID: 1280652646462621500, guid: 3aa6467d9aa55490d9f272c10bf2ab0c, type: 3}
+  - {fileID: 7114211161001733457, guid: c3cc2aaed6b7b40a0b01cbd554786751, type: 3}
+  - {fileID: 7045181561811972031, guid: 242ff60438d4b4973a08ea1e9085bf5f, type: 3}
+  - {fileID: 1119919985724498368, guid: cc5f30e058b3d4b99b34ddda7fe0be62, type: 3}
 --- !u!114 &-8418917113388928134
 MonoBehaviour:
   m_ObjectHideFlags: 0

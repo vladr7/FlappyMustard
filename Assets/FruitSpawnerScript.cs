@@ -16,12 +16,15 @@ public class FruitSpawnerScript : NetworkBehaviour
     // private float _lastSpawnTime;
     // private bool _firstSpawn = true;
     // public LogicManager logicManager;
+    
     [SerializeField]
-    private Transform spawnedObjectPrefab;
-    private Transform spawnedObjectTransform;
+    private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
+    private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
+
 
     public override void OnNetworkSpawn()
     {
+        spawnedFruitTransforms = new Transform[fruitPrefabs.Length];
         transform.position = new Vector3(transform.position.x, 14.4f, transform.position.z);
         // _lastSpawnTime = spawnRate;
         // nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
@@ -30,7 +33,8 @@ public class FruitSpawnerScript : NetworkBehaviour
         // _currentFruit.gameObject.SetActive(true);
         // UpdateFruitDropUi();
     }
-
+    
+  
     void Update()
     {
         if(!IsOwner) return;
@@ -45,9 +49,30 @@ public class FruitSpawnerScript : NetworkBehaviour
     [ServerRpc]
     private void RequestSpawnServerRpc(ServerRpcParams rpcParams = default)
     {
-        spawnedObjectTransform = Instantiate(spawnedObjectPrefab, transform.position, transform.rotation);
-        spawnedObjectTransform.GetComponent<NetworkObject>().Spawn();
+        // _spawnedCherryTransform = Instantiate(spawnedCherryPrefab, transform.position, transform.rotation);
+        // _spawnedCherryTransform.GetComponent<NetworkObject>().Spawn();
+        // Instantiate the selected fruit prefab
+
+        var index = GetNextFruitIndex();
+        spawnedFruitTransforms[index] = Instantiate(fruitPrefabs[index], transform.position, transform.rotation);
+
+        var networkObject = spawnedFruitTransforms[index].GetComponent<NetworkObject>();
+        if (networkObject != null)
+        {
+            networkObject.Spawn();
+        }
+        else
+        {
+            Debug.LogError("Spawned fruit does not have a NetworkObject component.");
+        }
     }
+    
+    private int GetNextFruitIndex()
+    {
+        int nextFruitIndex = Random.Range(0, fruitPrefabs.Length);
+        return nextFruitIndex;
+    }
+
 
     private void UserControls()
     {
