@@ -10,12 +10,13 @@ public class FruitSpawnerScript : NetworkBehaviour
 {
     public float horizontalLimit = 10.5f;
     public NextFruitScript nextFruitScript;
-    private GameObject _currentFruit;
-    public GameObject currentFruitDrop;
+    private Transform _currentFruit;
+    // public GameObject currentFruitDrop;
     public float spawnRate = 1f;
     private float _lastSpawnTime;
     private bool _firstSpawn = true;
     public LogicManager logicManager;
+    private Transform _spawnedFruitTransform;
 
     public override void OnNetworkSpawn()
     {
@@ -23,9 +24,9 @@ public class FruitSpawnerScript : NetworkBehaviour
         _lastSpawnTime = spawnRate;
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
-        _currentFruit = nextFruitScript.GetRandomFruit();
-        _currentFruit.SetActive(true);
-        UpdateFruitDropUi();
+        _currentFruit = nextFruitScript.GetRandomFruit().transform;
+        _currentFruit.gameObject.SetActive(true);
+        // UpdateFruitDropUi();
     }
 
     void Update()
@@ -41,8 +42,8 @@ public class FruitSpawnerScript : NetworkBehaviour
         {
             _firstSpawn = false;
             _lastSpawnTime = Time.time;
-            currentFruitDrop.SetActive(false);
-            SpawnFruit();
+            // currentFruitDrop.SetActive(false);
+            SpawnFruitServerRpc();
             Invoke(nameof(ManageCurrentAndNextFruitAfterSpawning), 1f);
         }
         
@@ -63,23 +64,25 @@ public class FruitSpawnerScript : NetworkBehaviour
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
 
-    private void SpawnFruit()
+    [ServerRpc]
+    private void SpawnFruitServerRpc()
     {
-        Instantiate(_currentFruit, transform.position, transform.rotation);
+        _spawnedFruitTransform = Instantiate(_currentFruit, transform.position, transform.rotation);
+        _spawnedFruitTransform.GetComponent<NetworkObject>().Spawn(true);
     }
 
     private void ManageCurrentAndNextFruitAfterSpawning()
     {
-        _currentFruit = nextFruitScript.nextFruit;
-        _currentFruit.SetActive(true);
-        UpdateFruitDropUi();
+        _currentFruit = nextFruitScript.nextFruit.transform;
+        _currentFruit.gameObject.SetActive(true);
+        // UpdateFruitDropUi();
         nextFruitScript.UpdateNextFruit();
-        currentFruitDrop.SetActive(true);
+        // currentFruitDrop.SetActive(true);
     }
 
-    private void UpdateFruitDropUi()
-    {
-            currentFruitDrop.transform.localScale = _currentFruit.transform.localScale * 0.6f;
-            currentFruitDrop.GetComponent<SpriteRenderer>().sprite = _currentFruit.GetComponent<SpriteRenderer>().sprite;
-    }
+    // private void UpdateFruitDropUi()
+    // {
+    //         currentFruitDrop.transform.localScale = _currentFruit.transform.localScale * 0.6f;
+    //         currentFruitDrop.GetComponent<SpriteRenderer>().sprite = _currentFruit.GetComponent<SpriteRenderer>().sprite;
+    // }
 }
