@@ -36,11 +36,17 @@ public class FruitSpawnerScript : NetworkBehaviour
         if(!IsOwner) return;
         if (Input.GetKeyDown(KeyCode.T))
         {
-            spawnedObjectTransform = Instantiate(spawnedObjectPrefab, transform.position, transform.rotation);
-            spawnedObjectTransform.GetComponent<NetworkObject>().Spawn(true);
+            RequestSpawnServerRpc();
         }
 
         UserControls();
+    }
+    
+    [ServerRpc]
+    private void RequestSpawnServerRpc(ServerRpcParams rpcParams = default)
+    {
+        Transform spawnedObjectTransform = Instantiate(spawnedObjectPrefab, transform.position, transform.rotation);
+        spawnedObjectTransform.GetComponent<NetworkObject>().Spawn();
     }
 
     private void UserControls()
