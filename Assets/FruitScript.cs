@@ -48,10 +48,7 @@ public class FruitScript : NetworkBehaviour
 
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                Debug.Log("Before RequestSpawnAtPositionServerRpc");
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Strawberry);
-
-                // SpawnFruit(transform.position.x, transform.position.y, FruitType.Strawberry);
                 // logicManager.IncreaseScore(1);
             }
         }

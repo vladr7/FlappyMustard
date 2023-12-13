@@ -68,8 +68,6 @@ public class FruitSpawnerScript : NetworkBehaviour
     public void RequestSpawnAtPositionServerRpc(float x, float y, FruitType fruitType,
         ServerRpcParams rpcParams = default)
     {
-        Debug.Log("Before");
-
         int index = (int)fruitType;
 
         if (index < 0 || index >= fruitPrefabs.Length)
@@ -85,13 +83,11 @@ public class FruitSpawnerScript : NetworkBehaviour
             return;
         }
 
-        var newFruit = Instantiate(fruitPrefabs[index], new Vector3(x, y, 0), Quaternion.identity);
-        Debug.Log("After");
+        spawnedFruitTransforms[index] = Instantiate(fruitPrefabs[index], new Vector3(x, y, 0), Quaternion.identity);
 
-        var networkObject = newFruit.GetComponent<NetworkObject>();
+        var networkObject = spawnedFruitTransforms[index].GetComponent<NetworkObject>();
         if (networkObject != null)
         {
-            Debug.Log("Spawning fruit at position: " + x + ", " + y);
             networkObject.Spawn();
         }
         else
