@@ -69,7 +69,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     
     private int GetNextFruitIndex()
     {
-        int nextFruitIndex = Random.Range(0, fruitPrefabs.Length);
+        int nextFruitIndex = Random.Range(0, fruitPrefabs.Length- 7);
         return nextFruitIndex;
     }
 
