@@ -16,11 +16,9 @@ public class FruitSpawnerScript : NetworkBehaviour
     // private float _lastSpawnTime;
     // private bool _firstSpawn = true;
     // public LogicManager logicManager;
-    
-    [SerializeField]
-    private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
-    private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
 
+    [SerializeField] private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
+    private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
 
     public override void OnNetworkSpawn()
     {
@@ -33,11 +31,10 @@ public class FruitSpawnerScript : NetworkBehaviour
         // _currentFruit.gameObject.SetActive(true);
         // UpdateFruitDropUi();
     }
-    
-  
+
     void Update()
     {
-        if(!IsOwner) return;
+        if (!IsOwner) return;
         if (Input.GetKeyDown(KeyCode.T))
         {
             RequestSpawnServerRpc();
@@ -45,7 +42,7 @@ public class FruitSpawnerScript : NetworkBehaviour
 
         UserControls();
     }
-    
+
     [ServerRpc]
     private void RequestSpawnServerRpc()
     {
@@ -68,9 +65,12 @@ public class FruitSpawnerScript : NetworkBehaviour
     }
 
     [ServerRpc]
-    public void RequestSpawnAtPositionServerRpc(float x, float y, FruitType fruitType, ServerRpcParams rpcParams = default)
+    public void RequestSpawnAtPositionServerRpc(float x, float y, FruitType fruitType,
+        ServerRpcParams rpcParams = default)
     {
-        int index = (int)fruitType; 
+        Debug.Log("Before");
+
+        int index = (int)fruitType;
 
         if (index < 0 || index >= fruitPrefabs.Length)
         {
@@ -78,24 +78,20 @@ public class FruitSpawnerScript : NetworkBehaviour
             return;
         }
 
+
         if (fruitPrefabs[index] == null)
         {
             Debug.LogError("Prefab not found for: " + fruitType.ToString());
             return;
         }
 
-        spawnedFruitTransforms[index] = Instantiate(fruitPrefabs[index], new Vector3(x, y, 0), Quaternion.identity);
+        var newFruit = Instantiate(fruitPrefabs[index], new Vector3(x, y, 0), Quaternion.identity);
+        Debug.Log("After");
 
-        // Play audio (consider playing this on the client side instead for better responsiveness)
-        var audioSource = spawnedFruitTransforms[index].GetComponent<AudioSource>();
-        if (audioSource != null)
-        {
-            audioSource.Play();
-        }
-
-        var networkObject = spawnedFruitTransforms[index].GetComponent<NetworkObject>();
+        var networkObject = newFruit.GetComponent<NetworkObject>();
         if (networkObject != null)
         {
+            Debug.Log("Spawning fruit at position: " + x + ", " + y);
             networkObject.Spawn();
         }
         else
@@ -117,12 +113,12 @@ public class FruitSpawnerScript : NetworkBehaviour
         // if(logicManager.isPaused || logicManager.gameHasEnded) return;
         // if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && ((Time.time - _lastSpawnTime >= spawnRate) || _firstSpawn))
         // {
-            // _firstSpawn = false;
-            // _lastSpawnTime = Time.time;
-            // currentFruitDrop.SetActive(false);
-            // Invoke(nameof(ManageCurrentAndNextFruitAfterSpawning), 1f);
+        // _firstSpawn = false;
+        // _lastSpawnTime = Time.time;
+        // currentFruitDrop.SetActive(false);
+        // Invoke(nameof(ManageCurrentAndNextFruitAfterSpawning), 1f);
         // }
-        
+
         PlayerMouseControl();
     }
 
@@ -136,13 +132,12 @@ public class FruitSpawnerScript : NetworkBehaviour
         localHorizontalLimit = 10.5f;
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             Camera.main.transform.position.y));
-        
+
         float clampedX = Mathf.Clamp(mousePosition.x, -localHorizontalLimit, localHorizontalLimit);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
 
-   
-    
+
     private void ManageCurrentAndNextFruitAfterSpawning()
     {
         // _currentFruit = nextFruitScript.nextFruit.transform;

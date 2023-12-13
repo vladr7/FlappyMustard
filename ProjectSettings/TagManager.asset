@@ -24,6 +24,7 @@ TagManager:
   - Melon
   - Watermelon
   - LogicManager
+  - FruitSpawner
   layers:
   - Default
   - TransparentFX

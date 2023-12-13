@@ -30,6 +30,7 @@ public class FruitScript : NetworkBehaviour
     // Start is called before the first frame update
     public override void OnNetworkSpawn()
     {
+        fruitSpawnerScript = GameObject.FindWithTag("FruitSpawner").GetComponent<FruitSpawnerScript>();
         // logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
     }
 
@@ -44,9 +45,11 @@ public class FruitScript : NetworkBehaviour
             other.gameObject.CompareTag(FruitType.Cherry.ToString()))
         {
             DestroyCollidedFruits(other);
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                // fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Strawberry);
+                Debug.Log("Before RequestSpawnAtPositionServerRpc");
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Strawberry);
 
                 // SpawnFruit(transform.position.x, transform.position.y, FruitType.Strawberry);
                 // logicManager.IncreaseScore(1);
