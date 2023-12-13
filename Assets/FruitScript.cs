@@ -23,6 +23,7 @@ public enum FruitType : int
 public class FruitScript : NetworkBehaviour
 {
     public LogicManager logicManager;
+
     // public AudioSource audioSource;
     // public GameObject whiteSplash;
     public FruitSpawnerScript fruitSpawnerScript;
@@ -48,123 +49,133 @@ public class FruitScript : NetworkBehaviour
 
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Strawberry);
-                // logicManager.IncreaseScore(1);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Strawberry);
+                fruitSpawnerScript.IncreaseScoreServerRpc(1);
             }
         }
-    
+
         if (gameObject.CompareTag(FruitType.Strawberry.ToString()) &&
             other.gameObject.CompareTag(FruitType.Strawberry.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Grape);
-                // logicManager.IncreaseScore(3);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Grape);
+                fruitSpawnerScript.IncreaseScoreServerRpc(3);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Grape.ToString()) &&
             other.gameObject.CompareTag(FruitType.Grape.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Lemon);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Lemon);
                 logicManager.IncreaseScore(6);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Lemon.ToString()) &&
             other.gameObject.CompareTag(FruitType.Lemon.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Orange);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Orange);
                 logicManager.IncreaseScore(10);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Orange.ToString()) &&
             other.gameObject.CompareTag(FruitType.Orange.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Apple);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Apple);
                 logicManager.IncreaseScore(15);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Apple.ToString()) &&
             other.gameObject.CompareTag(FruitType.Apple.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Pear);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Pear);
                 logicManager.IncreaseScore(21);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Pear.ToString()) && other.gameObject.CompareTag(FruitType.Pear.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Peach);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Peach);
                 logicManager.IncreaseScore(28);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Peach.ToString()) &&
             other.gameObject.CompareTag(FruitType.Peach.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Pineapple);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Pineapple);
                 logicManager.IncreaseScore(36);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Pineapple.ToString()) &&
             other.gameObject.CompareTag(FruitType.Pineapple.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Melon);
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Melon);
                 logicManager.IncreaseScore(45);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Melon.ToString()) &&
             other.gameObject.CompareTag(FruitType.Melon.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
             {
-                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Watermelon);                
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
+                    FruitType.Watermelon);
                 logicManager.IncreaseScore(55);
             }
         }
-        
+
         if (gameObject.CompareTag(FruitType.Watermelon.ToString()) &&
             other.gameObject.CompareTag(FruitType.Watermelon.ToString()))
         {
             DestroyCollidedFruits(other);
-        
+
             logicManager.IncreaseScore(66);
         }
     }
