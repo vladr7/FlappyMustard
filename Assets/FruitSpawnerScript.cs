@@ -47,7 +47,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     }
     
     [ServerRpc]
-    private void RequestSpawnServerRpc(ServerRpcParams rpcParams = default)
+    private void RequestSpawnServerRpc()
     {
         // _spawnedCherryTransform = Instantiate(spawnedCherryPrefab, transform.position, transform.rotation);
         // _spawnedCherryTransform.GetComponent<NetworkObject>().Spawn();
@@ -66,10 +66,48 @@ public class FruitSpawnerScript : NetworkBehaviour
             Debug.LogError("Spawned fruit does not have a NetworkObject component.");
         }
     }
-    
+
+    [ServerRpc]
+    public void RequestSpawnAtPositionServerRpc(float x, float y, FruitType fruitType, ServerRpcParams rpcParams = default)
+    {
+        int index = (int)fruitType; 
+
+        if (index < 0 || index >= fruitPrefabs.Length)
+        {
+            Debug.LogError("Invalid fruit index.");
+            return;
+        }
+
+        if (fruitPrefabs[index] == null)
+        {
+            Debug.LogError("Prefab not found for: " + fruitType.ToString());
+            return;
+        }
+
+        spawnedFruitTransforms[index] = Instantiate(fruitPrefabs[index], new Vector3(x, y, 0), Quaternion.identity);
+
+        // Play audio (consider playing this on the client side instead for better responsiveness)
+        var audioSource = spawnedFruitTransforms[index].GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
+
+        var networkObject = spawnedFruitTransforms[index].GetComponent<NetworkObject>();
+        if (networkObject != null)
+        {
+            networkObject.Spawn();
+        }
+        else
+        {
+            Debug.LogError("Spawned fruit does not have a NetworkObject component.");
+        }
+    }
+
     private int GetNextFruitIndex()
     {
-        int nextFruitIndex = Random.Range(0, fruitPrefabs.Length- 7);
+        // int nextFruitIndex = Random.Range(0, fruitPrefabs.Length);
+        int nextFruitIndex = Random.Range(0, 1);
         return nextFruitIndex;
     }
 
