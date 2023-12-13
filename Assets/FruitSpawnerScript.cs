@@ -45,7 +45,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     [ServerRpc]
     private void RequestSpawnServerRpc(ServerRpcParams rpcParams = default)
     {
-        Transform spawnedObjectTransform = Instantiate(spawnedObjectPrefab, transform.position, transform.rotation);
+        spawnedObjectTransform = Instantiate(spawnedObjectPrefab, transform.position, transform.rotation);
         spawnedObjectTransform.GetComponent<NetworkObject>().Spawn();
     }
 
