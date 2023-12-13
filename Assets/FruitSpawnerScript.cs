@@ -17,8 +17,9 @@ public class FruitSpawnerScript : NetworkBehaviour
     private bool _firstSpawn = true;
     public LogicManager logicManager;
 
-    void Start()
+    public override void OnNetworkSpawn()
     {
+        transform.position = new Vector3(transform.position.x, 14.4f, transform.position.z);
         _lastSpawnTime = spawnRate;
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
