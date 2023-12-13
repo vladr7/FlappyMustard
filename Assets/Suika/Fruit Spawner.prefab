@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 8991360753801794132}
   - component: {fileID: -2179525817855696871}
   - component: {fileID: 4597494082155972469}
-  - component: {fileID: 6147108647102736911}
+  - component: {fileID: -8418917113388928134}
   m_Layer: 0
   m_Name: Fruit Spawner
   m_TagString: Untagged
@@ -264,7 +264,7 @@ MonoBehaviour:
   currentFruitDrop: {fileID: 7101829457480920342}
   spawnRate: 1
   logicManager: {fileID: 0}
---- !u!114 &6147108647102736911
+--- !u!114 &-8418917113388928134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3933066472431347681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
