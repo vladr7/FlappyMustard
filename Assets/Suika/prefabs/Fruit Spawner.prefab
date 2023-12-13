@@ -259,11 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbfeadcac7cb4ee08c43f08866f3739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalLimit: 11
-  nextFruitScript: {fileID: 0}
-  currentFruitDrop: {fileID: 7101829457480920342}
-  spawnRate: 1
-  logicManager: {fileID: 0}
+  spawnedObjectPrefab: {fileID: 3593462644976549369, guid: 9cdbc23828b7249739789789e92ea4ed, type: 3}
 --- !u!114 &-8418917113388928134
 MonoBehaviour:
   m_ObjectHideFlags: 0
