@@ -4678,7 +4678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruits: {fileID: 7825126931179883543, guid: 8d461ceba11eb4afb9c4e21ffb809aa1, type: 3}
-  nextFruit: {fileID: 0}
+  nextFruit: {fileID: 1912950992}
   logicManager: {fileID: 1235983214}
 --- !u!1 &1914488844
 GameObject:

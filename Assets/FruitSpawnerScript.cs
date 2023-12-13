@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 public class FruitSpawnerScript : NetworkBehaviour
 {
     // public float horizontalLimit = 10.5f;
-    // public NextFruitScript nextFruitScript;
+    public NextFruitScript nextFruitScript;
     // private Transform _currentFruit;
     // public GameObject currentFruitDrop;
     // public float spawnRate = 1f;
@@ -29,7 +29,7 @@ public class FruitSpawnerScript : NetworkBehaviour
         spawnedFruitTransforms = new Transform[fruitPrefabs.Length];
         transform.position = new Vector3(transform.position.x, 14.4f, transform.position.z);
         // _lastSpawnTime = spawnRate;
-        // nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
+        nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         // logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
         // _currentFruit = nextFruitScript.GetRandomFruit().transform;
         // _currentFruit.gameObject.SetActive(true);
@@ -103,8 +103,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     
     private int GetNextFruitIndex()
     {
-        // int nextFruitIndex = Random.Range(0, fruitPrefabs.Length);
-        int nextFruitIndex = Random.Range(0, 1);
+        int nextFruitIndex = nextFruitScript.GetRandomFruitIndex();
         return nextFruitIndex;
     }
 

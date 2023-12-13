@@ -12,11 +12,11 @@ public class NextFruitScript : MonoBehaviour
 
     void Start()
     {
-        nextFruit = GetRandomFruit();
+        // nextFruit = GetRandomFruitIndex();
         gameObject.GetComponent<SpriteRenderer>().sprite = nextFruit.GetComponent<SpriteRenderer>().sprite;
     }
 
-    public GameObject GetRandomFruit()
+    public int GetRandomFruitIndex()
     {
         int index = GetItemBasedOnScore();
         while (index == lastItem && index == secondLastItem)
@@ -27,17 +27,14 @@ public class NextFruitScript : MonoBehaviour
         secondLastItem = lastItem;
         lastItem = index;
 
-        return GetFruitForIndex(index);
+        return index;
     }
     
-    public GameObject GetFruitForIndex(int index)
-    {
-        return fruits.transform.GetChild(index).gameObject;
-    }
+   
 
     public void UpdateNextFruit()
     {
-        nextFruit = GetRandomFruit();
+        // nextFruit = GetRandomFruitIndex();
         gameObject.GetComponent<SpriteRenderer>().sprite = nextFruit.GetComponent<SpriteRenderer>().sprite;
         gameObject.transform.localScale = nextFruit.transform.localScale;
     }
