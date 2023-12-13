@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LogicManager : MonoBehaviour
+public class LogicManager : NetworkBehaviour
 {
-    public int score = 0;
     public int bestScore = 0;
     public GameObject gameOverScreen;
     public FinalScoreScript finalScoreScript;
@@ -23,6 +23,20 @@ public class LogicManager : MonoBehaviour
     public GameObject papyrus;
     public AudioSource mainThemeAudioSource;
     public bool isPaused = false;
+
+    public NetworkVariable<int> score = new NetworkVariable<int>(
+        0,
+        NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Owner
+    );
+
+    public override void OnNetworkSpawn()
+    {
+        score.OnValueChanged += (int previousValue, int newValue) =>
+        {
+            Debug.Log(OwnerClientId + " ; score: " + score.Value);
+        };
+    }
 
     void Start()
     {
@@ -67,7 +81,7 @@ public class LogicManager : MonoBehaviour
             }
         }
     }
-    
+
     public void PauseGame()
     {
         isPaused = true;
@@ -76,7 +90,7 @@ public class LogicManager : MonoBehaviour
         mainThemeAudioSource.Pause();
         pauseScreen.SetActive(true);
     }
-    
+
     public void ResumeGame()
     {
         isPaused = false;
@@ -85,13 +99,24 @@ public class LogicManager : MonoBehaviour
         mainThemeAudioSource.Play();
         pauseScreen.SetActive(false);
     }
-    
-    public void IncreaseScore(int amount)
+
+    [ServerRpc]
+    public void IncreaseScoreServerRpc(int amount)
     {
-        if (!gameHasEnded)
+        if (!IsOwner)
         {
-            score += amount;
+            Debug.LogError("Only the owner can increase the score.");
+            return;
         }
+
+        if (gameHasEnded)
+        {
+            Debug.LogError("Game has ended.");
+            return;
+        }
+
+        score.Value += amount;
+        Debug.Log("Current score: " + score.Value);
     }
 
     private async void DisplayLeaderboard()
@@ -101,6 +126,7 @@ public class LogicManager : MonoBehaviour
         {
             Debug.Log("Leaderboard: " + playerNameScore.Name + ": " + playerNameScore.Score);
         }
+
         leaderboardScript.UpdateLeaderboard(result, userName);
         leaderboardScrollScript.PopulateLeaderboard(result, userName);
     }
@@ -116,18 +142,18 @@ public class LogicManager : MonoBehaviour
 
     public void SetBestScore()
     {
-        if (score > bestScore)
+        if (score.Value > bestScore)
         {
             Debug.Log("New best score: " + score);
-            bestScore = score;
+            bestScore = score.Value;
             playFabScript.UpdatePlayerScore(bestScore);
-            finalScoreScript.UpdateFinalScore(score, true);
+            finalScoreScript.UpdateFinalScore(score.Value, true);
             PlayerPrefs.SetInt("BEST_SCORE", bestScore);
         }
         else
         {
             Debug.Log("Final score: " + score);
-            finalScoreScript.UpdateFinalScore(score, false);
+            finalScoreScript.UpdateFinalScore(score.Value, false);
         }
     }
 

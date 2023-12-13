@@ -12,12 +12,12 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = logicManager.score.ToString();
+        scoreText.text = logicManager.score.Value.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = logicManager.score.ToString();
+        scoreText.text = logicManager.score.Value.ToString();
     }
 }

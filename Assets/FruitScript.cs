@@ -51,7 +51,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Strawberry);
-                fruitSpawnerScript.IncreaseScoreServerRpc(1);
+                logicManager.IncreaseScoreServerRpc(1);
             }
         }
 
@@ -64,7 +64,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Grape);
-                fruitSpawnerScript.IncreaseScoreServerRpc(3);
+                logicManager.IncreaseScoreServerRpc(3);
             }
         }
 
@@ -77,7 +77,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Lemon);
-                logicManager.IncreaseScore(6);
+                logicManager.IncreaseScoreServerRpc(6);
             }
         }
 
@@ -90,7 +90,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Orange);
-                logicManager.IncreaseScore(10);
+                logicManager.IncreaseScoreServerRpc(10);
             }
         }
 
@@ -103,7 +103,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Apple);
-                logicManager.IncreaseScore(15);
+                logicManager.IncreaseScoreServerRpc(15);
             }
         }
 
@@ -116,7 +116,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Pear);
-                logicManager.IncreaseScore(21);
+                logicManager.IncreaseScoreServerRpc(21);
             }
         }
 
@@ -128,7 +128,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Peach);
-                logicManager.IncreaseScore(28);
+                logicManager.IncreaseScoreServerRpc(28);
             }
         }
 
@@ -141,7 +141,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Pineapple);
-                logicManager.IncreaseScore(36);
+                logicManager.IncreaseScoreServerRpc(36);
             }
         }
 
@@ -154,7 +154,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Melon);
-                logicManager.IncreaseScore(45);
+                logicManager.IncreaseScoreServerRpc(45);
             }
         }
 
@@ -167,7 +167,7 @@ public class FruitScript : NetworkBehaviour
             {
                 fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y,
                     FruitType.Watermelon);
-                logicManager.IncreaseScore(55);
+                logicManager.IncreaseScoreServerRpc(55);
             }
         }
 
@@ -176,7 +176,7 @@ public class FruitScript : NetworkBehaviour
         {
             DestroyCollidedFruits(other);
 
-            logicManager.IncreaseScore(66);
+            logicManager.IncreaseScoreServerRpc(66);
         }
     }
 

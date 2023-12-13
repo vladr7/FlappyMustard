@@ -22,11 +22,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     [SerializeField] private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
     private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
     
-    private NetworkVariable<int> score = new NetworkVariable<int>(
-        0,
-        NetworkVariableReadPermission.Everyone,
-        NetworkVariableWritePermission.Owner
-    );
+
 
     public override void OnNetworkSpawn()
     {
@@ -39,10 +35,7 @@ public class FruitSpawnerScript : NetworkBehaviour
         // _currentFruit.gameObject.SetActive(true);
         // UpdateFruitDropUi();
         
-        score.OnValueChanged += (int previousValue, int newValue) =>
-        {
-            Debug.Log(OwnerClientId + " ; score: " + score.Value);
-        };
+      
     }
 
     void Update()
@@ -106,17 +99,7 @@ public class FruitSpawnerScript : NetworkBehaviour
         }
     }
     
-    [ServerRpc]
-    public void IncreaseScoreServerRpc(int amount)
-    {
-        if (!IsOwner)
-        {
-            Debug.LogError("Only the owner can increase the score.");
-            return;
-        }
-        score.Value += amount;
-        Debug.Log("Current score: " + score.Value);
-    }
+ 
     
     private int GetNextFruitIndex()
     {
