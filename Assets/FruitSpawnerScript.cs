@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class FruitSpawnerScript : MonoBehaviour
+public class FruitSpawnerScript : NetworkBehaviour
 {
     public float horizontalLimit = 10.5f;
     public NextFruitScript nextFruitScript;
@@ -20,6 +21,7 @@ public class FruitSpawnerScript : MonoBehaviour
     {
         _lastSpawnTime = spawnRate;
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
+        logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
         _currentFruit = nextFruitScript.GetRandomFruit();
         _currentFruit.SetActive(true);
         UpdateFruitDropUi();
@@ -27,6 +29,7 @@ public class FruitSpawnerScript : MonoBehaviour
 
     void Update()
     {
+        if(!IsOwner) return;
         UserControls();
     }
 
