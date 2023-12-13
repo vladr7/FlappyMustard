@@ -31,7 +31,7 @@ public class FruitScript : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         fruitSpawnerScript = GameObject.FindWithTag("FruitSpawner").GetComponent<FruitSpawnerScript>();
-        // logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
+        logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
     }
 
     // Update is called once per frame
@@ -53,121 +53,120 @@ public class FruitScript : NetworkBehaviour
             }
         }
     
-        // if (gameObject.CompareTag(FruitType.Strawberry.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Strawberry.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Grape);
-        //         logicManager.IncreaseScore(3);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Grape.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Grape.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Lemon);
-        //         logicManager.IncreaseScore(6);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Lemon.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Lemon.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Orange);
-        //         logicManager.IncreaseScore(10);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Orange.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Orange.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Apple);
-        //         logicManager.IncreaseScore(15);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Apple.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Apple.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Pear);
-        //         logicManager.IncreaseScore(21);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Pear.ToString()) && other.gameObject.CompareTag(FruitType.Pear.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Peach);
-        //         logicManager.IncreaseScore(28);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Peach.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Peach.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Pineapple);
-        //         logicManager.IncreaseScore(36);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Pineapple.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Pineapple.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Melon);
-        //         logicManager.IncreaseScore(45);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Melon.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Melon.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
-        //     {
-        //         SpawnFruit(transform.position.x, transform.position.y, FruitType.Watermelon);
-        //         
-        //         logicManager.IncreaseScore(55);
-        //     }
-        // }
-        //
-        // if (gameObject.CompareTag(FruitType.Watermelon.ToString()) &&
-        //     other.gameObject.CompareTag(FruitType.Watermelon.ToString()))
-        // {
-        //     DestroyCollidedFruits(other);
-        //
-        //     logicManager.IncreaseScore(66);
-        // }
+        if (gameObject.CompareTag(FruitType.Strawberry.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Strawberry.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Grape);
+                // logicManager.IncreaseScore(3);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Grape.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Grape.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Lemon);
+                logicManager.IncreaseScore(6);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Lemon.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Lemon.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Orange);
+                logicManager.IncreaseScore(10);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Orange.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Orange.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Apple);
+                logicManager.IncreaseScore(15);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Apple.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Apple.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Pear);
+                logicManager.IncreaseScore(21);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Pear.ToString()) && other.gameObject.CompareTag(FruitType.Pear.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Peach);
+                logicManager.IncreaseScore(28);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Peach.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Peach.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Pineapple);
+                logicManager.IncreaseScore(36);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Pineapple.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Pineapple.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Melon);
+                logicManager.IncreaseScore(45);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Melon.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Melon.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            if (gameObject.GetInstanceID() < other.gameObject.GetInstanceID())
+            {
+                fruitSpawnerScript.RequestSpawnAtPositionServerRpc(transform.position.x, transform.position.y, FruitType.Watermelon);                
+                logicManager.IncreaseScore(55);
+            }
+        }
+        
+        if (gameObject.CompareTag(FruitType.Watermelon.ToString()) &&
+            other.gameObject.CompareTag(FruitType.Watermelon.ToString()))
+        {
+            DestroyCollidedFruits(other);
+        
+            logicManager.IncreaseScore(66);
+        }
     }
 
     private void DestroyCollidedFruits(Collision2D other)

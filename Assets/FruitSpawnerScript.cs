@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -5,6 +6,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class FruitSpawnerScript : NetworkBehaviour
 {
@@ -68,11 +70,11 @@ public class FruitSpawnerScript : NetworkBehaviour
     public void RequestSpawnAtPositionServerRpc(float x, float y, FruitType fruitType,
         ServerRpcParams rpcParams = default)
     {
-        int index = (int)fruitType;
+        int index = GetIndexFromFruitType(fruitType);
 
         if (index < 0 || index >= fruitPrefabs.Length)
         {
-            Debug.LogError("Invalid fruit index.");
+            Debug.LogError("Invalid fruit index " + index + " for fruit type " + fruitType.ToString());
             return;
         }
 
@@ -95,7 +97,8 @@ public class FruitSpawnerScript : NetworkBehaviour
             Debug.LogError("Spawned fruit does not have a NetworkObject component.");
         }
     }
-
+    
+    
     private int GetNextFruitIndex()
     {
         // int nextFruitIndex = Random.Range(0, fruitPrefabs.Length);
@@ -103,7 +106,37 @@ public class FruitSpawnerScript : NetworkBehaviour
         return nextFruitIndex;
     }
 
-
+    private int GetIndexFromFruitType(FruitType fruitType)
+    {
+        switch (fruitType)
+        {
+            case FruitType.Cherry:
+                return 0;
+            case FruitType.Strawberry:
+                return 1;
+            case FruitType.Grape:
+                return 2;
+            case FruitType.Lemon:
+                return 3;
+            case FruitType.Orange:
+                return 4;
+            case FruitType.Apple:
+                return 5;
+            case FruitType.Pear:
+                return 6;
+            case FruitType.Peach:
+                return 7;
+            case FruitType.Pineapple:
+                return 8;
+            case FruitType.Melon:
+                return 9;
+            case FruitType.Watermelon:
+                return 10;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(fruitType), fruitType, null);
+        }
+    }
+    
     private void UserControls()
     {
         // if(logicManager.isPaused || logicManager.gameHasEnded) return;
