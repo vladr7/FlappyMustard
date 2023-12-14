@@ -16,6 +16,8 @@ public class FruitSpawnerScript : NetworkBehaviour
     
     [SerializeField] private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
     private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
+    
+    private int _currentFruitIndex = 0;
 
     public override void OnNetworkSpawn()
     {
@@ -32,9 +34,6 @@ public class FruitSpawnerScript : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             RequestSpawnServerRpc();
-            var randomIndex = GetNextFruitIndex();
-            // change sprite
-            UpdateCurrentFruitDropSprite(fruitPrefabs[randomIndex]);
         }
 
         UserControls();
@@ -43,14 +42,13 @@ public class FruitSpawnerScript : NetworkBehaviour
     [ServerRpc]
     private void RequestSpawnServerRpc()
     {
+        spawnedFruitTransforms[_currentFruitIndex] = Instantiate(fruitPrefabs[_currentFruitIndex], transform.position, transform.rotation);
 
-        var index = GetNextFruitIndex();
-        spawnedFruitTransforms[index] = Instantiate(fruitPrefabs[index], transform.position, transform.rotation);
-
-        var networkObject = spawnedFruitTransforms[index].GetComponent<NetworkObject>();
+        var networkObject = spawnedFruitTransforms[_currentFruitIndex].GetComponent<NetworkObject>();
         if (networkObject != null)
         {
             networkObject.Spawn();
+            _currentFruitIndex = GetNextFruitIndex();
         }
         else
         {
@@ -112,6 +110,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     private int GetNextFruitIndex()
     {
         int nextFruitIndex = nextFruitScript.GetRandomFruitIndex();
+        UpdateCurrentFruitDropSprite(fruitPrefabs[nextFruitIndex]);
         return nextFruitIndex;
     }
 
