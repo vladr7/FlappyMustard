@@ -17,7 +17,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     [SerializeField] private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
     private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
     
-    private int _currentFruitIndex = 0;
+    private NetworkVariable<int> currentFruitIndex = new NetworkVariable<int>(writePerm: NetworkVariableWritePermission.Server);
 
     public override void OnNetworkSpawn()
     {
@@ -38,17 +38,38 @@ public class FruitSpawnerScript : NetworkBehaviour
 
         UserControls();
     }
+    
+    private void OnEnable()
+    {
+        currentFruitIndex.OnValueChanged += OnCurrentFruitIndexChanged;
+    }
+
+    private void OnDisable()
+    {
+        currentFruitIndex.OnValueChanged -= OnCurrentFruitIndexChanged;
+    }
+
+    private void OnCurrentFruitIndexChanged(int oldIndex, int newIndex)
+    {
+        UpdateCurrentFruitDropSprite(fruitPrefabs[newIndex]);
+    }
+
 
     [ServerRpc]
     private void RequestSpawnServerRpc()
     {
-        spawnedFruitTransforms[_currentFruitIndex] = Instantiate(fruitPrefabs[_currentFruitIndex], transform.position, transform.rotation);
+        HandleFruitSpawn();
+    }
+    
+    private void HandleFruitSpawn()
+    {
+        spawnedFruitTransforms[currentFruitIndex.Value] = Instantiate(fruitPrefabs[currentFruitIndex.Value], transform.position, transform.rotation);
 
-        var networkObject = spawnedFruitTransforms[_currentFruitIndex].GetComponent<NetworkObject>();
+        var networkObject = spawnedFruitTransforms[currentFruitIndex.Value].GetComponent<NetworkObject>();
         if (networkObject != null)
         {
             networkObject.Spawn();
-            _currentFruitIndex = GetNextFruitIndex();
+            currentFruitIndex.Value = GetNextFruitIndex();
         }
         else
         {
