@@ -4677,8 +4677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab000d3b2cf649d090df3f54e3a8f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruits: {fileID: 7825126931179883543, guid: 8d461ceba11eb4afb9c4e21ffb809aa1, type: 3}
-  nextFruit: {fileID: 1912950992}
   logicManager: {fileID: 1235983214}
 --- !u!1 &1914488844
 GameObject:
@@ -4727,7 +4725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logicManager: {fileID: 1235983214}
   papyrus: {fileID: 951996044}
-  endGameTriggerDelay: 100
+  endGameTriggerDelay: 2.5
 --- !u!61 &1914488847
 BoxCollider2D:
   m_ObjectHideFlags: 0

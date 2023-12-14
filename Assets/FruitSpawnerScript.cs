@@ -8,9 +8,9 @@ public class FruitSpawnerScript : NetworkBehaviour
     // public float horizontalLimit = 10.5f;
     public NextFruitScript nextFruitScript;
     // private Transform _currentFruit;
-    // public float spawnRate = 1f;
-    // private float _lastSpawnTime;
-    // private bool _firstSpawn = true;
+    public float spawnRate = 3f;
+    private float _lastSpawnTime;
+    private bool _firstSpawn = true;
     // public LogicManager logicManager;
 
     public Transform currentFruitDropTransform;
@@ -18,13 +18,15 @@ public class FruitSpawnerScript : NetworkBehaviour
     [SerializeField] private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
     private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
     
-    private NetworkVariable<int> currentFruitIndex = new NetworkVariable<int>(writePerm: NetworkVariableWritePermission.Server);
+    private NetworkVariable<int> currentFruitIndex = new NetworkVariable<int>(0, writePerm: NetworkVariableWritePermission.Server);
+    
+    private NetworkVariable<bool> allowedToSpawn = new NetworkVariable<bool>(true, writePerm: NetworkVariableWritePermission.Server);
 
     public override void OnNetworkSpawn()
     {
         spawnedFruitTransforms = new Transform[fruitPrefabs.Length];
         transform.position = new Vector3(transform.position.x, 14.4f, transform.position.z);
-        // _lastSpawnTime = spawnRate;
+        _lastSpawnTime = spawnRate;
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         // logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
     }
@@ -32,7 +34,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     void Update()
     {
         if (!IsOwner) return;
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T) && allowedToSpawn.Value)
         {
             RequestSpawnServerRpc();
         }
@@ -71,11 +73,18 @@ public class FruitSpawnerScript : NetworkBehaviour
         {
             networkObject.Spawn();
             currentFruitIndex.Value = GetNextFruitIndex();
+            allowedToSpawn.Value = false;
+            Invoke(nameof(ManageAllowNextSpawn), spawnRate);
         }
         else
         {
             Debug.LogError("Spawned fruit does not have a NetworkObject component.");
         }
+    }
+    
+    private void ManageAllowNextSpawn()
+    {
+        allowedToSpawn.Value = true;
     }
     
     private void UpdateCurrentFruitDropSprite(Transform newFruitTransform)
@@ -187,8 +196,7 @@ public class FruitSpawnerScript : NetworkBehaviour
     
     private int GetNextFruitIndex()
     {
-        // int nextFruitIndex = nextFruitScript.GetRandomFruitIndex();
-        int nextFruitIndex = new Random().Next(0, 7);
+        int nextFruitIndex = nextFruitScript.GetRandomFruitIndex();
         UpdateCurrentFruitDropSprite(fruitPrefabs[nextFruitIndex]);
         return nextFruitIndex;
     }
@@ -226,15 +234,6 @@ public class FruitSpawnerScript : NetworkBehaviour
     
     private void UserControls()
     {
-        // if(logicManager.isPaused || logicManager.gameHasEnded) return;
-        // if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) && ((Time.time - _lastSpawnTime >= spawnRate) || _firstSpawn))
-        // {
-        // _firstSpawn = false;
-        // _lastSpawnTime = Time.time;
-        // currentFruitDrop.SetActive(false);
-        // Invoke(nameof(ManageCurrentAndNextFruitAfterSpawning), 1f);
-        // }
-
         PlayerMouseControl();
     }
 
