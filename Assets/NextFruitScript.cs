@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class NextFruitScript : MonoBehaviour
 {
-    public GameObject fruits;
-    public GameObject nextFruit;
     public LogicManager logicManager;
     private int lastItem = -1;
     private int secondLastItem = -1;
-
-    void Start()
-    {
-        // nextFruit = GetRandomFruitIndex();
-        gameObject.GetComponent<SpriteRenderer>().sprite = nextFruit.GetComponent<SpriteRenderer>().sprite;
-    }
 
     public int GetRandomFruitIndex()
     {
@@ -29,16 +21,7 @@ public class NextFruitScript : MonoBehaviour
 
         return index;
     }
-    
-   
 
-    public void UpdateNextFruit()
-    {
-        // nextFruit = GetRandomFruitIndex();
-        gameObject.GetComponent<SpriteRenderer>().sprite = nextFruit.GetComponent<SpriteRenderer>().sprite;
-        gameObject.transform.localScale = nextFruit.transform.localScale;
-    }
-    
     private int GetItemBasedOnScore()
     {
         float[] chances = new float[8]; // Array to hold chances for each item, up to item 7
