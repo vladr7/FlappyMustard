@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5135571529988014205}
   - component: {fileID: 4753257438805677119}
   - component: {fileID: 283097235332408071}
+  - component: {fileID: 6363454419835661399}
   - component: {fileID: 8273429973316226544}
   - component: {fileID: -3256289112463726661}
-  - component: {fileID: 6363454419835661399}
   - component: {fileID: -539179217647410273}
   - component: {fileID: 7844535438400205166}
   m_Layer: 0
@@ -153,6 +153,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.08}
   serializedVersion: 2
   m_Radius: 1.75
+--- !u!114 &6363454419835661399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098934610598690288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 780392009
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &8273429973316226544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,8 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicManager: {fileID: 0}
-  audioSource: {fileID: -3256289112463726661}
-  whiteSplash: {fileID: 1472960713564456325, guid: 97fbf0c380bb44bcc97666c40db507ad, type: 3}
+  fruitSpawnerScript: {fileID: 0}
 --- !u!82 &-3256289112463726661
 AudioSource:
   m_ObjectHideFlags: 0
@@ -264,26 +283,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6363454419835661399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9098934610598690288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 780392009
-  AlwaysReplicateAsRoot: 0
-  SynchronizeTransform: 1
-  ActiveSceneSynchronization: 0
-  SceneMigrationSynchronization: 1
-  SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!114 &-539179217647410273
 MonoBehaviour:
   m_ObjectHideFlags: 0

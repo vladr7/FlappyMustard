@@ -1,6 +1,7 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
+using Random = System.Random;
 
 public class FruitSpawnerScript : NetworkBehaviour
 {
@@ -82,6 +83,7 @@ public class FruitSpawnerScript : NetworkBehaviour
         Debug.Log("UpdateCurrentFruitDropSprite");
         if (currentFruitDropTransform != null)
         {
+            var storedFruitDropScale = newFruitTransform.localScale;
             Debug.Log("currentFruitDropTransform != null");
             SpriteRenderer newFruitSpriteRenderer = newFruitTransform.GetComponent<SpriteRenderer>();
             SpriteRenderer currentFruitDropSpriteRenderer = currentFruitDropTransform.GetComponent<SpriteRenderer>();
@@ -90,6 +92,61 @@ public class FruitSpawnerScript : NetworkBehaviour
             {
                 Debug.Log("newFruitSpriteRenderer != null && currentFruitDropSpriteRenderer != null");
                 currentFruitDropSpriteRenderer.sprite = newFruitSpriteRenderer.sprite;
+
+                if (newFruitTransform.CompareTag(FruitType.Cherry.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                }
+
+                if (newFruitTransform.CompareTag(FruitType.Strawberry.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.4f, 0.4f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Grape.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.55f, 0.55f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Lemon.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.75f, 0.75f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Orange.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.75f, 0.75f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Apple.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(1.0f, 1.0f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Pear.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(1.05f, 1.05f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Peach.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.6f, 0.6f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Pineapple.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.65f, 0.65f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Melon.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.7f, 0.7f, 0.2f);
+                }
+                
+                if (newFruitTransform.CompareTag(FruitType.Watermelon.ToString()))
+                {
+                    currentFruitDropTransform.localScale = new Vector3(0.75f, 0.75f, 0.2f);
+                }
             }
         }
     }
@@ -130,7 +187,8 @@ public class FruitSpawnerScript : NetworkBehaviour
     
     private int GetNextFruitIndex()
     {
-        int nextFruitIndex = nextFruitScript.GetRandomFruitIndex();
+        // int nextFruitIndex = nextFruitScript.GetRandomFruitIndex();
+        int nextFruitIndex = new Random().Next(0, 7);
         UpdateCurrentFruitDropSprite(fruitPrefabs[nextFruitIndex]);
         return nextFruitIndex;
     }
