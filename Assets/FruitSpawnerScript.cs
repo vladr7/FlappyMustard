@@ -1,28 +1,21 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 public class FruitSpawnerScript : NetworkBehaviour
 {
     // public float horizontalLimit = 10.5f;
     public NextFruitScript nextFruitScript;
     // private Transform _currentFruit;
-    // public GameObject currentFruitDrop;
     // public float spawnRate = 1f;
     // private float _lastSpawnTime;
     // private bool _firstSpawn = true;
     // public LogicManager logicManager;
 
+    public Transform currentFruitDropTransform;
+    
     [SerializeField] private Transform[] fruitPrefabs; // Array to hold different fruit prefabs
     private Transform[] spawnedFruitTransforms; // Array to hold spawned fruit transforms
-    
-
 
     public override void OnNetworkSpawn()
     {
@@ -31,11 +24,6 @@ public class FruitSpawnerScript : NetworkBehaviour
         // _lastSpawnTime = spawnRate;
         nextFruitScript = GameObject.FindWithTag("NextFruit").GetComponent<NextFruitScript>();
         // logicManager = GameObject.FindWithTag("LogicManager").GetComponent<LogicManager>();
-        // _currentFruit = nextFruitScript.GetRandomFruit().transform;
-        // _currentFruit.gameObject.SetActive(true);
-        // UpdateFruitDropUi();
-        
-      
     }
 
     void Update()
@@ -60,10 +48,28 @@ public class FruitSpawnerScript : NetworkBehaviour
         if (networkObject != null)
         {
             networkObject.Spawn();
+            UpdateCurrentFruitDropSprite(spawnedFruitTransforms[index]);
         }
         else
         {
             Debug.LogError("Spawned fruit does not have a NetworkObject component.");
+        }
+    }
+    
+    private void UpdateCurrentFruitDropSprite(Transform newFruitTransform)
+    {
+        Debug.Log("UpdateCurrentFruitDropSprite");
+        if (currentFruitDropTransform != null)
+        {
+            Debug.Log("currentFruitDropTransform != null");
+            SpriteRenderer newFruitSpriteRenderer = newFruitTransform.GetComponent<SpriteRenderer>();
+            SpriteRenderer currentFruitDropSpriteRenderer = currentFruitDropTransform.GetComponent<SpriteRenderer>();
+
+            if (newFruitSpriteRenderer != null && currentFruitDropSpriteRenderer != null)
+            {
+                Debug.Log("newFruitSpriteRenderer != null && currentFruitDropSpriteRenderer != null");
+                currentFruitDropSpriteRenderer.sprite = newFruitSpriteRenderer.sprite;
+            }
         }
     }
 
@@ -166,20 +172,4 @@ public class FruitSpawnerScript : NetworkBehaviour
         float clampedX = Mathf.Clamp(mousePosition.x, -localHorizontalLimit, localHorizontalLimit);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
     }
-
-
-    private void ManageCurrentAndNextFruitAfterSpawning()
-    {
-        // _currentFruit = nextFruitScript.nextFruit.transform;
-        // _currentFruit.gameObject.SetActive(true);
-        // UpdateFruitDropUi();
-        // nextFruitScript.UpdateNextFruit();
-        // currentFruitDrop.SetActive(true);
-    }
-
-    // private void UpdateFruitDropUi()
-    // {
-    //         currentFruitDrop.transform.localScale = _currentFruit.transform.localScale * 0.6f;
-    //         currentFruitDrop.GetComponent<SpriteRenderer>().sprite = _currentFruit.GetComponent<SpriteRenderer>().sprite;
-    // }
 }
