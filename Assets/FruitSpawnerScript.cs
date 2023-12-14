@@ -32,6 +32,9 @@ public class FruitSpawnerScript : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             RequestSpawnServerRpc();
+            var randomIndex = GetNextFruitIndex();
+            // change sprite
+            UpdateCurrentFruitDropSprite(fruitPrefabs[randomIndex]);
         }
 
         UserControls();
@@ -48,7 +51,6 @@ public class FruitSpawnerScript : NetworkBehaviour
         if (networkObject != null)
         {
             networkObject.Spawn();
-            UpdateCurrentFruitDropSprite(spawnedFruitTransforms[index]);
         }
         else
         {
