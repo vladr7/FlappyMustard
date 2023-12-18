@@ -41,6 +41,7 @@ public class LeaderboardScript : MonoBehaviour
         else
         {
             int playerRank = GetPlayerRank(leaderboard, currentUserName);
+            Debug.Log("Player rank: " + playerRank);
             fourthPlaceText.text = playerRank + "    " +  currentUserName + " " + leaderboard[3].Score;
         }
     }
