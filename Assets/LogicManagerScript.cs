@@ -101,8 +101,10 @@ public class LogicManager : MonoBehaviour
         {
             Debug.Log("Leaderboard: " + playerNameScore.Name + ": " + playerNameScore.Score);
         }
-        leaderboardScript.UpdateLeaderboard(result, userName);
         leaderboardScrollScript.PopulateLeaderboard(result, userName);
+        
+        if(gameHasEnded) return;
+        leaderboardScript.UpdateLeaderboard(result, userName);
     }
 
     private async void SetPlayerName()

@@ -67,4 +67,12 @@ public class LeaderboardScript : MonoBehaviour
         return -1;
     }
     
+    public void ClearLeaderboard()
+    {
+        firstPlaceText.text = "";
+        secondPlaceText.text = "";
+        thirdPlaceText.text = "";
+        fourthPlaceText.text = "";
+    }
+    
 }
