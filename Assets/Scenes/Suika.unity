@@ -320,7 +320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -730, y: 246}
+  m_AnchoredPosition: {x: -752, y: 246}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &110352387
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: Best Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9bd723c1d99ec489a966453fbe064b11, type: 2}
   m_sharedMaterial: {fileID: -6196455911290329521, guid: 9bd723c1d99ec489a966453fbe064b11, type: 2}
@@ -366,8 +366,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4291615715
-  m_fontColor: {r: 0.89019614, g: 0.8588236, b: 0.8000001, a: 1}
+    rgba: 4294901996
+  m_fontColor: {r: 0.9246073, g: 0, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -623,7 +623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -23.6, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &211996138
@@ -668,8 +668,8 @@ Transform:
   m_GameObject: {fileID: 227873293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: 11.56, z: 0.04}
-  m_LocalScale: {x: 4.549486, y: 5.1451077, z: 1}
+  m_LocalPosition: {x: -1.21, y: 12.15, z: 0.04}
+  m_LocalScale: {x: 3.0709033, y: 2.7712433, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1907489823}
@@ -715,7 +715,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7dd0fea94b5da41e3ae5436f05cbd0d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24072ad1c77d5480a8c229b544fb1d59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1809,8 +1809,8 @@ Transform:
   m_GameObject: {fileID: 689271079}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14, y: -0.100958124, z: 5.22}
-  m_LocalScale: {x: 1.84, y: 1.85, z: 1}
+  m_LocalPosition: {x: 0.05, y: -0.01, z: 5.22}
+  m_LocalScale: {x: 1.8621199, y: 1.8728325, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2701,7 +2701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -710, y: 298}
+  m_AnchoredPosition: {x: -731, y: 298}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072214612
@@ -2733,8 +2733,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293327100
-  m_fontColor: {r: 0.98823535, g: 0.9725491, b: 0.90196085, a: 1}
+    rgba: 4279312004
+  m_fontColor: {r: 0.5188679, g: 0.11903189, b: 0.06608224, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4093,7 +4093,7 @@ Transform:
   m_GameObject: {fileID: 1820333726}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.19, y: -3.27, z: 0}
+  m_LocalPosition: {x: -14.34, y: -3.27, z: 0}
   m_LocalScale: {x: 4.3389845, y: 3.7208607, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4316,7 +4316,7 @@ Transform:
   m_GameObject: {fileID: 1907489822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87737656, y: -0.86725247, z: -1.83131}
+  m_LocalPosition: {x: 0.57, y: -1.25, z: -1.83131}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4406,7 +4406,7 @@ Transform:
   m_GameObject: {fileID: 1912950992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.34, y: 10.01, z: -1.730276}
+  m_LocalPosition: {x: 24.74, y: 10.05, z: -1.730276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4557,7 +4557,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 0.747771, b: 0.4669811, a: 0}
+  m_BackGroundColor: {r: 0.83921576, g: 0.93725497, b: 0.94117653, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
